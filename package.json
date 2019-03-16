@@ -19,6 +19,7 @@
     "nodemon": "^1.18.10",
     "openzeppelin-solidity": "^2.2.0",
     "orbit-db": "^0.19.9",
-    "orbit-db-cli": "0.0.16"
+    "orbit-db-cli": "0.0.16",
+    "webpack": "^4.29.6"
   }
 }
