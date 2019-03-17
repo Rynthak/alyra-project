@@ -72,13 +72,34 @@ export default {
     console.log("dispatching getContractInstance");
     this.$store.dispatch("getContractInstance");
   },
-  created() {
-     //console.log(this.$store.state.contractInstance())
-  },
 
   methods: {
-    onSubmit(evt) {},
-    onReset(evt) {}
+    onSubmit(evt) {
+      evt.preventDefault();
+      console.log(JSON.stringify(this.form));
+
+      this.$store.state.contractInstance().owner((err, result) => {
+        if (err) {
+          console.log(err);
+          //this.pending = false;
+        } else {
+            console.log(result);
+        }
+      });
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      /* Reset our form values */
+      this.form.title = "";
+      this.form.description = "";
+      this.form.pictures = null;
+
+      /* Trick to reset/clear native browser form validation state */
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
+    }
   }
 };
 </script>
