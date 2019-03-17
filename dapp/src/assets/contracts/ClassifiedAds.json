@@ -1,0 +1,634 @@
+{
+  "contractName": "ClassifiedAds",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "ads",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ads_owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "ads",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Ads",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a36104db806100cf6000396000f3fe608060405234801561001057600080fd5b506004361061007f576000357c01000000000000000000000000000000000000000000000000000000009004806311a7a4c014610084578063715018a6146100c65780638da5cb5b146100d05780638f32d59b1461011a578063d7ddcc561461013c578063f2fde38b146101aa575b600080fd5b6100b06004803603602081101561009a57600080fd5b81019080803590602001909291905050506101ee565b6040518082815260200191505060405180910390f35b6100ce610211565b005b6100d86102e3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61012261030c565b604051808215151515815260200191505060405180910390f35b6101686004803603602081101561015257600080fd5b8101908080359060200190929190505050610363565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101ec600480360360208110156101c057600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610396565b005b6001818154811015156101fd57fe5b906000526020600020016000915090505481565b61021961030c565b151561022457600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60026020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61039e61030c565b15156103a957600080fd5b6103b2816103b5565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156103f157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a723058208e801c35bcfe18afaeb216cabdea6cedbfbfab260af72f6041291014d0cefac90029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061007f576000357c01000000000000000000000000000000000000000000000000000000009004806311a7a4c014610084578063715018a6146100c65780638da5cb5b146100d05780638f32d59b1461011a578063d7ddcc561461013c578063f2fde38b146101aa575b600080fd5b6100b06004803603602081101561009a57600080fd5b81019080803590602001909291905050506101ee565b6040518082815260200191505060405180910390f35b6100ce610211565b005b6100d86102e3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61012261030c565b604051808215151515815260200191505060405180910390f35b6101686004803603602081101561015257600080fd5b8101908080359060200190929190505050610363565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101ec600480360360208110156101c057600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610396565b005b6001818154811015156101fd57fe5b906000526020600020016000915090505481565b61021961030c565b151561022457600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b60026020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b61039e61030c565b15156103a957600080fd5b6103b2816103b5565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156103f157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a723058208e801c35bcfe18afaeb216cabdea6cedbfbfab260af72f6041291014d0cefac90029",
+  "sourceMap": "152:188:0:-;;;524:10:3;515:6;;:19;;;;;;;;;;;;;;;;;;582:6;;;;;;;;;;;549:40;;578:1;549:40;;;;;;;;;;;;152:188:0;;;;;;",
+  "deployedSourceMap": "152:188:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;152:188:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;218:20;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;218:20:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1423:137:3;;;:::i;:::-;;659:77;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;979:90;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;241:46:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;241:46:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1731:107:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1731:107:3;;;;;;;;;;;;;;;;;;;:::i;:::-;;218:20:0;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1423:137:3:-;863:9;:7;:9::i;:::-;855:18;;;;;;;;1521:1;1484:40;;1505:6;;;;;;;;;;;1484:40;;;;;;;;;;;;1551:1;1534:6;;:19;;;;;;;;;;;;;;;;;;1423:137::o;659:77::-;697:7;723:6;;;;;;;;;;;716:13;;659:77;:::o;979:90::-;1019:4;1056:6;;;;;;;;;;;1042:20;;:10;:20;;;1035:27;;979:90;:::o;241:46:0:-;;;;;;;;;;;;;;;;;;;;;;:::o;1731:107:3:-;863:9;:7;:9::i;:::-;855:18;;;;;;;;1803:28;1822:8;1803:18;:28::i;:::-;1731:107;:::o;1982:183::-;2075:1;2055:22;;:8;:22;;;;2047:31;;;;;;;;2122:8;2093:38;;2114:6;;;;;;;;;;;2093:38;;;;;;;;;;;;2150:8;2141:6;;:17;;;;;;;;;;;;;;;;;;1982:183;:::o",
+  "source": "pragma solidity ^0.5.2;\n\n\nimport \"openzeppelin-solidity/contracts/math/SafeMath.sol\";\nimport \"openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\ncontract ClassifiedAds is Ownable{\n\tusing SafeMath for uint256;\t\n\tbytes32[] public ads;\n\tmapping (bytes32 => address) public  ads_owner;\n \tevent Ads(\n        bytes32 ads\n    );\n\t \n\t \n\t\n\t\n}",
+  "sourcePath": "/Users/rynthak/git/alyra-project/contracts/ClassifiedAds.sol",
+  "ast": {
+    "absolutePath": "/Users/rynthak/git/alyra-project/contracts/ClassifiedAds.sol",
+    "exportedSymbols": {
+      "ClassifiedAds": [
+        20
+      ]
+    },
+    "id": 21,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/math/SafeMath.sol",
+        "file": "openzeppelin-solidity/contracts/math/SafeMath.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 21,
+        "sourceUnit": 206,
+        "src": "26:59:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 3,
+        "nodeType": "ImportDirective",
+        "scope": 21,
+        "sourceUnit": 315,
+        "src": "86:63:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 314,
+              "src": "178:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$314",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 5,
+            "nodeType": "InheritanceSpecifier",
+            "src": "178:7:0"
+          }
+        ],
+        "contractDependencies": [
+          314
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 20,
+        "linearizedBaseContracts": [
+          20,
+          314
+        ],
+        "name": "ClassifiedAds",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 8,
+            "libraryName": {
+              "contractScope": null,
+              "id": 6,
+              "name": "SafeMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 205,
+              "src": "194:8:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath_$205",
+                "typeString": "library SafeMath"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "188:27:0",
+            "typeName": {
+              "id": 7,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "207:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "name": "ads",
+            "nodeType": "VariableDeclaration",
+            "scope": 20,
+            "src": "218:20:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+              "typeString": "bytes32[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 9,
+                "name": "bytes32",
+                "nodeType": "ElementaryTypeName",
+                "src": "218:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                }
+              },
+              "id": 10,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "218:9:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                "typeString": "bytes32[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 15,
+            "name": "ads_owner",
+            "nodeType": "VariableDeclaration",
+            "scope": 20,
+            "src": "241:46:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+              "typeString": "mapping(bytes32 => address)"
+            },
+            "typeName": {
+              "id": 14,
+              "keyType": {
+                "id": 12,
+                "name": "bytes32",
+                "nodeType": "ElementaryTypeName",
+                "src": "250:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "241:28:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                "typeString": "mapping(bytes32 => address)"
+              },
+              "valueType": {
+                "id": 13,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "261:7:0",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 19,
+            "name": "Ads",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 17,
+                  "indexed": false,
+                  "name": "ads",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 19,
+                  "src": "310:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 16,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "310:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "300:27:0"
+            },
+            "src": "291:37:0"
+          }
+        ],
+        "scope": 21,
+        "src": "152:188:0"
+      }
+    ],
+    "src": "0:340:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/rynthak/git/alyra-project/contracts/ClassifiedAds.sol",
+    "exportedSymbols": {
+      "ClassifiedAds": [
+        20
+      ]
+    },
+    "id": 21,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/math/SafeMath.sol",
+        "file": "openzeppelin-solidity/contracts/math/SafeMath.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 21,
+        "sourceUnit": 206,
+        "src": "26:59:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 3,
+        "nodeType": "ImportDirective",
+        "scope": 21,
+        "sourceUnit": 315,
+        "src": "86:63:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 314,
+              "src": "178:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$314",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 5,
+            "nodeType": "InheritanceSpecifier",
+            "src": "178:7:0"
+          }
+        ],
+        "contractDependencies": [
+          314
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 20,
+        "linearizedBaseContracts": [
+          20,
+          314
+        ],
+        "name": "ClassifiedAds",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 8,
+            "libraryName": {
+              "contractScope": null,
+              "id": 6,
+              "name": "SafeMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 205,
+              "src": "194:8:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath_$205",
+                "typeString": "library SafeMath"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "188:27:0",
+            "typeName": {
+              "id": 7,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "207:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            }
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "name": "ads",
+            "nodeType": "VariableDeclaration",
+            "scope": 20,
+            "src": "218:20:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+              "typeString": "bytes32[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 9,
+                "name": "bytes32",
+                "nodeType": "ElementaryTypeName",
+                "src": "218:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                }
+              },
+              "id": 10,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "218:9:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                "typeString": "bytes32[]"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 15,
+            "name": "ads_owner",
+            "nodeType": "VariableDeclaration",
+            "scope": 20,
+            "src": "241:46:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+              "typeString": "mapping(bytes32 => address)"
+            },
+            "typeName": {
+              "id": 14,
+              "keyType": {
+                "id": 12,
+                "name": "bytes32",
+                "nodeType": "ElementaryTypeName",
+                "src": "250:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "241:28:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                "typeString": "mapping(bytes32 => address)"
+              },
+              "valueType": {
+                "id": 13,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "261:7:0",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 19,
+            "name": "Ads",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 17,
+                  "indexed": false,
+                  "name": "ads",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 19,
+                  "src": "310:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 16,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "310:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "300:27:0"
+            },
+            "src": "291:37:0"
+          }
+        ],
+        "scope": 21,
+        "src": "152:188:0"
+      }
+    ],
+    "src": "0:340:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.3+commit.10d17f24.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.3",
+  "updatedAt": "2019-03-17T17:55:01.527Z",
+  "devdoc": {
+    "methods": {
+      "isOwner()": {
+        "return": "true if `msg.sender` is the owner of the contract."
+      },
+      "owner()": {
+        "return": "the address of the owner."
+      },
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "The address to transfer ownership to."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "notice": "Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      }
+    }
+  }
+}

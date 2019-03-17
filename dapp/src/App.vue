@@ -11,7 +11,11 @@ import Menu from './components/Menu';
 import Footer from './components/Footer';
 export default {
   components: {'TopMenu':Menu,'Footer':Footer},
-  name: 'App'
+  name: 'App',
+  beforeCreate () {
+    console.log('registerWeb3 Action dispatched from casino-dapp.vue')
+    this.$store.dispatch('registerWeb3')
+  }
 }
 </script>
 
