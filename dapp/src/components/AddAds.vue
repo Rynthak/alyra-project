@@ -30,23 +30,28 @@
             placeholder="Enter something..."
             rows="3"
             max-rows="6"
+            required
             />
 
-            <pre class="mt-3 mb-0">{{ text }}</pre>
+            <pre class="mt-3 mb-0">{{ form.description }}</pre>
         </b-form-group>
+        <b-form-group id="adsPicturesGroup"
+          label="Ads Pictures:"
+          label-for="adsPictures"
+          description="Please upload ADS pictures"
+        >
+         <b-form-file
+            id="adsPictures"
+            v-model="form.pictures"
+            :state="Boolean(form.pictures)"
+            placeholder="Choose pictures picture..."
+            drop-placeholder="Drop file here..."
+            />
+         </b-form-group>
 
 
-
-
-        <button class="btn btn-primary" :disabled="disableSubmit" @click="performSubmit">Add new ADS</button>
-        <strong v-show="submitting">Submitting...</strong>
-        <strong v-show="errorSubmit" class="text-danger">Error occurred!</strong>
-
-        <p v-show="successMessage" class="text-success">
-          <strong>Ads successfully added</strong>
-          <br>You will be redirected to the ads page
-          <strong>once the block will be mined!</strong>
-        </p>
+        <button class="btn btn-primary">Add new ADS</button>
+         
       </b-form>
     
   </b-container>
@@ -57,7 +62,8 @@ export default {
     return {
       form: {
         title: "",
-        description:""
+        description:"",
+        pictures:null
         
       },
       show: true
@@ -65,21 +71,10 @@ export default {
   },
   methods: {
     onSubmit(evt) {
-      evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      
     },
     onReset(evt) {
-      evt.preventDefault();
-      /* Reset our form values */
-      this.form.email = "";
-      this.form.name = "";
-      this.form.food = null;
-      this.form.checked = [];
-      /* Trick to reset/clear native browser form validation state */
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
+       
     }
   }
 };
