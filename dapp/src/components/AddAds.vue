@@ -46,6 +46,8 @@
             :state="Boolean(form.pictures)"
             placeholder="Choose pictures picture..."
             drop-placeholder="Drop file here..."
+            multiple="true"
+            accept="image/*"
             />
          </b-form-group>
 
