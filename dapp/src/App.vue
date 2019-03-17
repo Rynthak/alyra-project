@@ -1,7 +1,6 @@
 <template>
-  <div id="app">
-    <TopMenu></TopMenu>
-    <img src="./assets/logo.png">
+ <div id="app">
+    <TopMenu></TopMenu>      
     <router-view/>
   </div>
 </template>
@@ -14,9 +13,3 @@ export default {
 }
 </script>
 
-<style>
-    .main-content {
-        padding:20px 40px;
-    }
-    
-</style>
