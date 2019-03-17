@@ -9,4 +9,3 @@
     </footer>
   </b-container>
 </template>
- 

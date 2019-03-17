@@ -7,7 +7,9 @@
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
         <router-link tag="b-nav-item" to="/newads" exact>
-          <a><strong>Add new Ads</strong></a>
+          <a>
+            <strong>Add new Ads</strong>
+          </a>
         </router-link>
       </b-navbar-nav>
       <!-- Right aligned nav items -->
@@ -20,4 +22,3 @@
     </b-collapse>
   </b-navbar>
 </template>
- 
