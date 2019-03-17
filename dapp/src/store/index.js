@@ -9,7 +9,7 @@ export const store = new Vuex.Store({
   strict: true,
   state,
   mutations: {
-    registerWeb3Instance(state, payload) {
+    registerWeb3Instance (state, payload) {
       console.log('registerWeb3instance Mutation being executed', payload)
       let result = payload
       let web3Copy = state.web3
@@ -21,14 +21,14 @@ export const store = new Vuex.Store({
       state.web3 = web3Copy
     },
 
-    registerContractInstance(state, payload) {
+    registerContractInstance (state, payload) {
       console.log('Dapp contract instance: ', payload)
       state.contractInstance = () => payload
     }
 
   },
   actions: {
-    registerWeb3({
+    registerWeb3 ({
       commit
     }) {
       console.log('registerWeb3 Action being executed')
@@ -39,7 +39,7 @@ export const store = new Vuex.Store({
         console.log('error in action registerWeb3', e)
       })
     },
-    getContractInstance({
+    getContractInstance ({
       commit
     }) {
       getContract.then(result => {
