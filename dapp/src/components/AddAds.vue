@@ -57,9 +57,18 @@
   </b-container>
 </template>
 <script>
+
+import IPFS from 'ipfs'
+import OrbitDB from 'orbit-db'
+
+
 export default {
   data() {
     return {
+      ipfsDBREADY: false,
+      ipfs: null,
+      orbitdb: null, 
+      db: null, 
       form: {
         title: "",
         description: "",
@@ -71,6 +80,22 @@ export default {
   mounted() {
     console.log("dispatching getContractInstance");
     this.$store.dispatch("getContractInstance");
+ 
+    this.ipfs = new IPFS({
+      EXPERIMENTAL: {
+        pubsub: true
+      }
+    })
+    this.ipfs.on('ready', async () => {
+     this.orbitdb = new OrbitDB(this.ipfs)
+      const access = {
+        write: ['*'],
+      }
+      this.db = await this.orbitdb.keyvalue('first-database');
+     console.log(this.db.address.toString())
+      this.ipfsDBREADY = true;    
+    }) 
+
   },
 
   methods: {

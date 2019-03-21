@@ -4,10 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import BootstrapVue from 'bootstrap-vue'
+
 import {store} from './store/'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+/** Fixes for Chrome */
+import "setimmediate"
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
