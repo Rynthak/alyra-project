@@ -68,7 +68,7 @@ export default {
       ipfsDBREADY: false,
       ipfs: null,
       orbitdb: null, 
-      db: null, 
+      docstore: null, 
       form: {
         title: "",
         description: "",
@@ -84,16 +84,43 @@ export default {
     this.ipfs = new IPFS({
       EXPERIMENTAL: {
         pubsub: true
-      }
+      },
+      config: {
+          Addresses: {
+            Swarm: [
+              // Use IPFS dev signal server
+              // '/dns4/star-signal.cloud.ipfs.team/wss/p2p-webrtc-star',
+              '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star',
+              // Use local signal server
+              // '/ip4/0.0.0.0/tcp/9090/wss/p2p-webrtc-star',
+              "/ip4/107.170.133.32/tcp/4001/ipfs/QmUZRGLhcKXF1JyuaHgKm23LvqcoMYwtb9jmh8CkP4og3K",
+              "/ip4/139.59.174.197/tcp/4001/ipfs/QmZfTbnpvPwxCjpCG3CXJ7pfexgkBZ2kgChAiRJrTK1HsM",
+              "/ip4/139.59.6.222/tcp/4001/ipfs/QmRDcEDK9gSViAevCHiE6ghkaBCU7rTuQj4BDpmCzRvRYg",
+              "/ip4/46.101.198.170/tcp/4001/ipfs/QmePWxsFT9wY3QuukgVDB7XZpqdKhrqJTHTXU7ECLDWJqX",
+              "/ip4/198.46.197.197/tcp/4001/ipfs/QmdXiwDtfKsfnZ6RwEcovoWsdpyEybmmRpVDXmpm5cpk2s",
+              "/ip4/198.46.197.197/tcp/4002/ipfs/QmWAm7ZPLGTgofLXZgoAzEaNkYFPsaVKKGjWscE4Fbec9P"
+            ]
+          },
+          //Bootstrap: [
+          //  "/ip4/198.46.197.197/tcp/4001/ipfs/QmdXiwDtfKsfnZ6RwEcovoWsdpyEybmmRpVDXmpm5cpk2s",
+          //  "/ip4/198.46.197.197/tcp/4002/ipfs/QmWAm7ZPLGTgofLXZgoAzEaNkYFPsaVKKGjWscE4Fbec9P"
+          //]
+        }
     })
     this.ipfs.on('ready', async () => {
      this.orbitdb = new OrbitDB(this.ipfs)
-      const access = {
-        write: ['*'],
-      }
-      this.db = await this.orbitdb.keyvalue('first-database');
-     console.log(this.db.address.toString())
+      
+     const docstore = await this.orbitdb.docstore('dapp-sells', { indexBy: 'doc' });
+        
       this.ipfsDBREADY = true;    
+ console.log(docstore);
+    //await this.db.put('hello', { name: 'World' });
+
+   docstore.put({ _id: 'hello world', doc: 'some things' })
+  .then(() => docstore.put({ _id: 'hello universe', doc: 'all the things' }))
+  .then(() => docstore.get('all'))
+  .then((value) => console.log(value))
+
     }) 
 
   },
