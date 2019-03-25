@@ -31,13 +31,20 @@ module.exports = {
 const ipfsOptions = {
   EXPERIMENTAL: {
     pubsub: true
-  }
+  },
+  relay: {
+      enabled: true,
+      hop: {
+        enabled: true,
+        active: false
+      }
+    }
 }
 
 // Returns a promise that resolves to a handle of the DB.
 function openDb() {
   return new Promise(function(resolve, reject) {
-    try {
+
       // Create IPFS instance
       ipfs = new IPFS(ipfsOptions)
 
@@ -68,9 +75,10 @@ function openDb() {
         return resolve(db);
       })
 
-    } catch(err) {
-      return reject(err);
-    }
+    
+  }).catch( function (err ){
+       console.log(err);
+        
   })
 }
  
