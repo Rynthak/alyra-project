@@ -57,17 +57,9 @@
   </b-container>
 </template>
 <script>
-
-
-
-
 export default {
   data() {
-    return {
-      /*ipfsDBREADY: false,
-      ipfs: null,
-      orbitdb: null, 
-      docstore: null, */
+    return {       
       form: {
         title: "",
         description: "",
@@ -88,6 +80,9 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
       console.log(JSON.stringify(this.form));
+
+        
+
 
       this.$store.state.contractInstance().owner((err, result) => {
         if (err) {

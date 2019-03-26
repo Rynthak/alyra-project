@@ -24,11 +24,11 @@ export const store = new Vuex.Store({
     },
 
     registerContractInstance (state, payload) {
-      console.log('Dapp contract instance: ', payload)
+      console.log('Dapp contract instance address: ', payload.address)
       state.contractInstance = () => payload
     },
     registerObitDbInstance(state,payload){
-        console.log('Orbit DB instance: ', payload)
+        console.log('Orbit DB instance ID: ', payload.id)
         state.orbitDbInstance = () => payload
     }
 
