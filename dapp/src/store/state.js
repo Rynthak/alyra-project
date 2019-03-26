@@ -7,6 +7,8 @@ let state = {
     balance: null,
     error: null
   },
-  contractInstance: null
+  contractInstance: null,
+  ipfs:null,
+  orbitDbInstance:null
 }
 export default state

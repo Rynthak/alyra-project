@@ -4,6 +4,8 @@ import state from './state'
 
 import getWeb3 from '../libs/getWeb3'
 import getContract from '../libs/getContract'
+import getOrbitDb from '../libs/getOrbitDb'
+
 Vue.use(Vuex)
 export const store = new Vuex.Store({
   strict: true,
@@ -24,6 +26,10 @@ export const store = new Vuex.Store({
     registerContractInstance (state, payload) {
       console.log('Dapp contract instance: ', payload)
       state.contractInstance = () => payload
+    },
+    registerObitDbInstance(state,payload){
+        console.log('Orbit DB instance: ', payload)
+        state.orbitDbInstance = () => payload
     }
 
   },
@@ -45,6 +51,14 @@ export const store = new Vuex.Store({
       getContract.then(result => {
         commit('registerContractInstance', result)
       }).catch(e => console.log(e))
+    },
+    getOrbitDbInstance ({
+      commit
+    }) {
+      getOrbitDb.then(result => {
+        commit('registerObitDbInstance', result)
+      }).catch(e => console.log(e))
     }
+
   }
 })
