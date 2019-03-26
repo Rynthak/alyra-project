@@ -108,18 +108,16 @@ export default {
         }
     })
     this.ipfs.on('ready', async () => {
-     this.orbitdb = new OrbitDB(this.ipfs)
-      
-     const docstore = await this.orbitdb.docstore('dapp-sells', { indexBy: 'doc' });
+    this.orbitdb = new OrbitDB(this.ipfs)
+      let  dbAddress ="/orbitdb/Qmea5zfeGu6KQUHEeyZ5CKA3EVQiL5nxMhpxxoHXY43Lit/dapp-sells";
+      const docstore = await this.orbitdb.open(dbAddress);
+        await docstore.load()
         
       this.ipfsDBREADY = true;    
- console.log(docstore);
+ 
     //await this.db.put('hello', { name: 'World' });
-
-   docstore.put({ _id: 'hello world', doc: 'some things' })
-  .then(() => docstore.put({ _id: 'hello universe', doc: 'all the things' }))
-  .then(() => docstore.get('all'))
-  .then((value) => console.log(value))
+    const all = docstore.query((id) => id =='hello world')
+    console.log(all)
 
     }) 
 
