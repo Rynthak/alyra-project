@@ -3,19 +3,21 @@ var router = express.Router();
 
 
 //Route for adding new ads to Orbit DB
-router.post('/create', function(req, res, next) {
-   
-    /*await global.db.put({ _id: 'hello world'+Math.random() , doc: 'some things'+Math.random()  })   
-           .then(() => db.get(''))
-           .then((value) => console.log(value))*/
+router.post('/create', function(req, res, next) {   
+    
     let newAds = {};
-
     newAds._id=Math.random();
-
     newAds.title=req.body.title;
-    console.log(newAds);
-
-    res.json('Ads successfully added');
+    newAds.description=req.body.description;
+    newAds.pictures=req.body.pictures;
+   
+    global.db.put(newAds).then((hash) => {
+        newAds.hashIPFS=hash;
+        console.log(hash);
+         //Send back to front end for contract interaction and payment
+        res.status(200).json(newAds);
+    });   
+    
 });
 
 module.exports = router;
