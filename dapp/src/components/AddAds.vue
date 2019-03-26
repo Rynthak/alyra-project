@@ -57,6 +57,8 @@
   </b-container>
 </template>
 <script>
+import {APIAdsService} from '../services/APIAdsService'
+const apiService = new APIAdsService();
 export default {
   data() {
     return {       
@@ -71,17 +73,25 @@ export default {
   mounted() {
     console.log("dispatching getContractInstance");
     this.$store.dispatch("getContractInstance");
-
-    console.log("dispatching getOrbitDbInstance");
-    this.$store.dispatch("getOrbitDbInstance");
   },
 
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
       console.log(JSON.stringify(this.form));
+         //Form is valid , we add the new ads to the orbitDB database
+        //Call the express server with orbit DB
+       apiService.createAds(JSON.stringify(this.form)).then((result)=>{
 
-        
+        console.log(result);
+         
+        },(error)=>{
+            console.log(error);
+        });
+     
+
+
+    
 
 
       this.$store.state.contractInstance().owner((err, result) => {
