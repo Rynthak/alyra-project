@@ -78,10 +78,10 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      console.log(JSON.stringify(this.form));
+      console.log((this.form));
          //Form is valid , we add the new ads to the orbitDB database
         //Call the express server with orbit DB
-       apiService.createAds(JSON.stringify(this.form)).then((result)=>{
+       apiService.createAds(this.form).then((result)=>{
 
         console.log(result);
          

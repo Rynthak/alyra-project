@@ -84,11 +84,6 @@ function openDb() {
         db = await orbitdb.docstore('dapp-sells', access)
         await db.load()
 
-         await db.put({ _id: 'hello world'+Math.random() , doc: 'some things'+Math.random()  })   
-           .then(() => db.get(''))
-           .then((value) => console.log(value))
-
-
         console.log(`database string: ${db.address.toString()}`)
         console.log(`db public key: ${db.key.getPublic('hex')}`)
 
