@@ -87,8 +87,7 @@ export default {
         //Get New ADS added to orbitDB
         this.$store.state.contractInstance().payNewAds(result.data.hashBytes32,{
             value: this.$store.state.web3.web3Instance().toWei('0.1', 'ether'),
-            from: this.$store.state.web3.coinbase,
-            gas: 300000
+            from: this.$store.state.web3.coinbase
         },(err, result) => {
             if (err) {
             console.log(err);

@@ -20,6 +20,10 @@
     "openzeppelin-solidity": "^2.2.0",
     "orbit-db": "^0.19.9",
     "orbit-db-cli": "0.0.16",
+    "truffle-hdwallet-provider": "^1.0.5",
     "webpack": "^4.29.6"
+  },
+  "devDependencies": {
+    "dotenv": "^7.0.0"
   }
 }
