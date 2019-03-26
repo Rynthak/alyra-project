@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var bs58 = require('bs58');
 
 //Route for adding new ads to Orbit DB
 router.post('/create', function(req, res, next) {   
@@ -13,7 +13,9 @@ router.post('/create', function(req, res, next) {
    
     global.db.put(newAds).then((hash) => {
         newAds.hashIPFS=hash;
-        console.log(hash);
+        let unencodedData= hash;
+    	const hashHex = "0x"+bs58.decode(unencodedData).slice(2).toString('hex');
+        newAds.hashBytes32 = hashHex;        
          //Send back to front end for contract interaction and payment
         res.status(200).json(newAds);
     });   

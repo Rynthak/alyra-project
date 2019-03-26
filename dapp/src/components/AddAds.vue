@@ -78,30 +78,33 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      console.log((this.form));
-         //Form is valid , we add the new ads to the orbitDB database
+       
+     //Form is valid , we add the new ads to the orbitDB database
         //Call the express server with orbit DB
        apiService.createAds(this.form).then((result)=>{
 
-        console.log(result);
+         
+        //Get New ADS added to orbitDB
+        this.$store.state.contractInstance().payNewAds(result.data.hashBytes32,{
+            value: this.$store.state.web3.web3Instance().toWei('0.1', 'ether'),
+            from: this.$store.state.web3.coinbase,
+            gas: 300000
+        },(err, result) => {
+            if (err) {
+            console.log(err);
+            //this.pending = false;
+            } else {
+                console.log(result);
+            }
+        });
+
          
         },(error)=>{
             console.log(error);
-        });
-     
+        });   
 
 
-    
-
-
-      this.$store.state.contractInstance().owner((err, result) => {
-        if (err) {
-          console.log(err);
-          //this.pending = false;
-        } else {
-            console.log(result);
-        }
-      });
+      
     },
     onReset(evt) {
       evt.preventDefault();
