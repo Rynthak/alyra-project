@@ -1,12 +1,16 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="#">DappSell</b-navbar-brand>
-
+    
+    <router-link tag="b-navbar-brand" :to="{ name: 'Home' }" exact>
+          <a>
+            DappSell
+          </a>
+        </router-link>
     <b-navbar-toggle target="nav_collapse"/>
 
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <router-link tag="b-nav-item" to="/newads" exact>
+        <router-link tag="b-nav-item" :to="{ name: 'AddAds' }" exact>
           <a>
             <strong>Add new Ads</strong>
           </a>
