@@ -18,6 +18,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueTelInput from 'vue-tel-input'
 import 'vue-tel-input/dist/vue-tel-input.css';
 
+import vSelect from 'vue-select'
+
+import FlagIcon from 'vue-flag-icon'
+
 
 library.add(fab,fas)
 
@@ -27,7 +31,9 @@ import "setimmediate"
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(VueTelInput)
+Vue.use(FlagIcon);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('v-select', vSelect)
 
 /* eslint-disable no-new */
 new Vue({

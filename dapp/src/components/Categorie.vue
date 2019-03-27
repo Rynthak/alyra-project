@@ -7,11 +7,8 @@
     <div class="container">
         <ul class="list-unstyled">
        
-           <b-media tag="li" v-for="ads in listing" :key="ads.id">
-                <b-img slot="aside" blank blank-color="#abc" width="64" alt="placeholder" />
-
-                <h5 class="mt-0 mb-1">{{ ads.title }}</h5>
-                <p class="mb-0">{{ ads.description  }}</p>
+           <b-media tag="li" v-for="ads in listing" :key="ads.id">                
+                <h5 class="mt-0 mb-1">{{ ads.title }}</h5>               
             </b-media>
         
         </ul>

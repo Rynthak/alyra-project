@@ -37,6 +37,32 @@
          
  </b-form-group>
 
+        <b-form-group
+        id="adsCitieGroup"
+        label="Ads Citie:"
+        label-for="adsCitie"
+        description="Please select your citie"
+      >
+        <v-select  :filterable="false" :options="citiesoptions" label="name"  @search="onSearch">
+            <template slot="no-options">
+            type to search cities..
+            </template>
+            <template slot="option" slot-scope="option">
+            <div class="d-center">     
+                <flag :iso="option.country" />            
+                {{ option.name }}
+                </div>
+            </template>
+            <template slot="selected-option" slot-scope="option">
+            <div class="selected d-center"> 
+                 <flag :iso="option.country" />                  
+                {{ option.name }}
+            </div>
+            </template>
+
+        </v-select>
+         </b-form-group>
+
 
       <b-form-group
         id="adsTitleGroup"
@@ -107,8 +133,11 @@ export default {
             number: '',
             isValid: false,
             country: undefined,
-        }
+        },
+        citie : ""
+       
       },
+      citiesoptions:[],
       categories : [],
       show: true
     };
@@ -126,7 +155,20 @@ export default {
      this.getCategories(); 
   },
   methods: {
-    
+    onSearch(search, loading) {
+      loading(true);
+      
+      apiService.getCitie(search).then((result)=>{        
+           
+          this.citiesoptions = result.data.items
+           
+          loading(false);
+        },(error)=>{
+            console.log(error);
+        }); 
+
+
+    },
     onInput({ number, isValid, country }) {
       this.form.phone.number = number;
       this.form.phone.isValid = isValid;

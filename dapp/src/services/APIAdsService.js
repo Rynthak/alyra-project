@@ -19,4 +19,9 @@ export class APIAdsService {
        const url = `${process.env.API_URL}/ads/getcategories/`;
        return axios.get(url);
   }
+
+  getCitie (search){
+      const url = `${process.env.API_URL}/ads/getcitie/`;
+      return axios.post(url,{'citie':search});
+  }
 }

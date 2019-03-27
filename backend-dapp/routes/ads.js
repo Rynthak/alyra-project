@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var bs58 = require('bs58');
-const IPFS = require('ipfs');
+var IPFS = require('ipfs');
+var cities = require("all-the-cities")
 var formidable = require('formidable');
 var readChunk = require('read-chunk');
 var fileType = require('file-type');
 var fs = require('fs');
+
 
 const configCategories = require('../assets/categories.json');
 //Route for adding new ads to Orbit DB
@@ -15,6 +17,7 @@ router.post('/create', function(req, res, next) {
      
     newAds._id=Math.random();     
     newAds.status = 0;
+    newAds.date_add = Date.now() / 1000 | 0;
     newAds.files=[];
     var form = new formidable.IncomingForm();
    
@@ -59,15 +62,7 @@ router.post('/create', function(req, res, next) {
      
     
 });
-var handleUpload = async function(req){
-        var form = new formidable.IncomingForm();
-        form.parse(req);
-        var formfields = await new Promise(function (resolve, reject) {
-            form.on('file', function (name, file){
-                console.log(name, file)
-            });
-        });
-    };
+ 
 
 router.get('/getcategories', function(req, res, next) {  
 
@@ -78,4 +73,17 @@ router.get('/getcategories', function(req, res, next) {
     res.status(200).json(categories);
 
 });
+
+router.post('/getcitie', function(req, res, next) { 
+    let search ={};
+    console.log(req.body.citie);
+    search.items = cities.filter(city => {    
+       return city.name.match(req.body.citie);
+    })   
+    res.status(200).json(search);
+});
+
+
+
+
 module.exports = router;
