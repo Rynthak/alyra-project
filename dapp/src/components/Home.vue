@@ -17,7 +17,7 @@
             </div>
           </div>
            
-          <b-col cols="12" md="3" lg="2" sm="2" xs="4" class="f-category" v-for="categorie in listcategories.categories">
+          <b-col cols="12" md="3" lg="2" sm="2" xs="4" class="f-category" v-for="categorie in categories">
             <a>
               <font-awesome-icon :icon="[ 'fas', categorie.icon ]" size="6x"/>
               <h6>{{ categorie.label }}</h6>
@@ -35,19 +35,30 @@ export default {
   data() {
     return {
       msg: "Welcome to my First CraigList APP",
-      listcategories: null
+      categories: []
     };
   } ,
+ 
+  methods: {
+       getCategories() {
+           if(typeof this.$store.state.orbitDbInstance !=undefined )
+           this.categories = this.$store.state.orbitDbInstance().get('categories').shift().categories;
+       }
+  },
+
   created() {   
     
     this.$store.subscribe((mutation, state) => {
            if(mutation.type=='registerObitDbInstance'){
-                this.listcategories = this.$store.state.orbitDbInstance().get('categories').shift(); 
-                   
+                 this.getCategories();                   
            }
     });
 
-  }
+  },
+  mounted() {
+     this.getCategories(); 
+  },
+
 
 };
 </script>

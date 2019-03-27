@@ -20,7 +20,7 @@
       <template slot="first">
         <option :value="null" disabled>-- Please select an categorie --</option>
       </template>
-        <option v-for="categorie in listcategories.categories" :value="categorie.id">{{ categorie.label }}</option>
+        <option v-for="categorie in categories" :value="categorie.id">{{ categorie.label }}</option>
         </b-form-select>
       </b-form-group>
 
@@ -90,7 +90,7 @@ export default {
         pictures: null,
         categorie:""
       },
-      listcategories : null,
+      categories : [],
       show: true
     };
   } ,
@@ -98,13 +98,20 @@ export default {
     
     this.$store.subscribe((mutation, state) => {
            if(mutation.type=='registerObitDbInstance'){
-                this.listcategories = this.$store.state.orbitDbInstance().get('categories').shift(); 
-                   
+                 this.getCategories();                   
            }
     });
 
   },
+  mounted() {
+     this.getCategories(); 
+  },
   methods: {
+
+    getCategories() {
+        if(typeof this.$store.state.orbitDbInstance !=undefined )
+        this.categories = this.$store.state.orbitDbInstance().get('categories').shift().categories;
+    },
     onSubmit(evt) {
       evt.preventDefault();
        
