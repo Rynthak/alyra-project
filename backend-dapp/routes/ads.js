@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bs58 = require('bs58');
-
+const configCategories = require('../assets/categories.json');
 //Route for adding new ads to Orbit DB
 router.post('/create', function(req, res, next) {   
     
@@ -21,5 +21,13 @@ router.post('/create', function(req, res, next) {
     });   
     
 });
+router.get('/getcategories', function(req, res, next) {  
 
+   
+    const categories =  global.db.query((doc) => doc._id =='categories');
+    console.log(configCategories.categories);
+    
+    res.status(200).json(categories);
+
+});
 module.exports = router;

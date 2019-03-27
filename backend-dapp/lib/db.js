@@ -11,7 +11,7 @@ const IPFS = require('ipfs')
 const OrbitDB = require('orbit-db')
 let ipfs // handle for IPFS instance.
 let db // handle for orbit DB.
-
+const configCategories = require('../assets/categories.json');
 const util = require("util");
 util.inspect.defaultOptions = {
   showHidden: true,
@@ -87,10 +87,15 @@ function openDb() {
         console.log(`database string: ${db.address.toString()}`)
         console.log(`db public key: ${db.key.getPublic('hex')}`)
 
+        db.put(configCategories); 
+
         // React when the database is updated.
         db.events.on('replicated', () => {
           console.log(`Databse replicated. Check for new prices.`)
         })
+
+          
+
 
         return resolve(db);
       })

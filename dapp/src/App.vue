@@ -15,6 +15,14 @@ export default {
   beforeCreate () {
     console.log('registerWeb3 Action dispatched')
     this.$store.dispatch('registerWeb3')
+
+    console.log("dispatching getContractInstance");
+    this.$store.dispatch("getContractInstance");
+
+    console.log("dispatching getOrbitDbInstance");
+    this.$store.dispatch("getOrbitDbInstance");
+
+
   }
 }
 </script>

@@ -16,11 +16,11 @@
               </h2>
             </div>
           </div>
-
-          <b-col cols="12" md="3" lg="2" sm="2" xs="4" class="f-category">
+           
+          <b-col cols="12" md="3" lg="2" sm="2" xs="4" class="f-category" v-for="categorie in listcategories.categories">
             <a>
-              <font-awesome-icon :icon="[ 'fas', 'coffee' ]" size="6x"/>
-              <h6>Multimédia</h6>
+              <font-awesome-icon :icon="[ 'fas', categorie.icon ]" size="6x"/>
+              <h6>{{ categorie.label }}</h6>
             </a>
           </b-col>
         </b-row>
@@ -34,9 +34,24 @@ export default {
   name: "Home",
   data() {
     return {
-      msg: "Welcome to my First CraigList APP"
+      msg: "Welcome to my First CraigList APP",
+      listcategories: null
     };
+  }, 
+  mounted() {
+      
+  },
+  created() {   
+    
+    this.$store.subscribe((mutation, state) => {
+           if(mutation.type=='registerObitDbInstance'){
+                this.listcategories = this.$store.state.orbitDbInstance().get('categories').shift(); 
+                console.log(this.categories) ;     
+           }
+    });
+
   }
+
 };
 </script>
 

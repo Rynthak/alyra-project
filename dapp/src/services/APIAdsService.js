@@ -10,4 +10,9 @@ export class APIAdsService {
     const url = `${process.env.API_URL}/ads/create/`;
     return axios.post(url, ads);
   }
+
+  getCategories (){
+       const url = `${process.env.API_URL}/ads/getcategories/`;
+       return axios.get(url);
+  }
 }
