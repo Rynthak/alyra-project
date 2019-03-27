@@ -8,7 +8,11 @@ export class APIAdsService {
 
   createAds(ads) {
     const url = `${process.env.API_URL}/ads/create/`;
-    return axios.post(url, ads);
+    return axios.post(url, ads,{
+    headers: {
+        'Content-Type': 'multipart/form-data'
+    }
+  });
   }
 
   getCategories (){

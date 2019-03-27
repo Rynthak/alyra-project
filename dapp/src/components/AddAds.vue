@@ -78,6 +78,7 @@
       >
         <b-form-file
           id="adsPictures"
+         
           v-model="form.pictures"
           :state="Boolean(form.pictures)"
           placeholder="Choose pictures picture..."
@@ -125,6 +126,7 @@ export default {
      this.getCategories(); 
   },
   methods: {
+    
     onInput({ number, isValid, country }) {
       this.form.phone.number = number;
       this.form.phone.isValid = isValid;
@@ -139,7 +141,14 @@ export default {
        
      //Form is valid , we add the new ads to the orbitDB database
         //Call the express server with orbit DB
-       apiService.createAds(this.form).then((result)=>{
+        let formData = new FormData();
+        for( var i = 0; i < this.form.pictures.length; i++ ){
+        let file = this.form.pictures[i];
+
+        formData.append('files[' + i + ']', file);
+        }
+
+       apiService.createAds(formData).then((result)=>{
 
          
         //Get New ADS added to orbitDB

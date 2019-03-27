@@ -5,12 +5,9 @@ const configCategories = require('../assets/categories.json');
 //Route for adding new ads to Orbit DB
 router.post('/create', function(req, res, next) {   
     
-    let newAds = {};
-    newAds._id=Math.random();
-    newAds.title=req.body.title;
-    newAds.description=req.body.description;
-    newAds.pictures=req.body.pictures;
-   
+    let newAds = req.body;
+    newAds._id=Math.random();     
+    newAds.status = 0;
     global.db.put(newAds).then((hash) => {
         newAds.hashIPFS=hash;
         let unencodedData= hash;
