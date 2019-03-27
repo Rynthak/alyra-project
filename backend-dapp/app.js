@@ -7,11 +7,15 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var adsRouter = require('./routes/ads');
-
 const dbLib = require("./lib/db.js"); // handle all db stuff.
+ 
+
 
 var app = express();
+
+
 global.db;
+ 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,9 +53,8 @@ app.use(function(err, req, res, next) {
 //STAR db server
 async function startDB() {
     // Open the Database
-    db = await dbLib.openDb();   
+    db = await dbLib.openDb();  
+    
 }
 startDB();
-
-
 module.exports = app;

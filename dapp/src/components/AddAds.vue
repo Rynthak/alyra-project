@@ -130,7 +130,7 @@ export default {
     onInput({ number, isValid, country }) {
       this.form.phone.number = number;
       this.form.phone.isValid = isValid;
-      this.form.phone.country = country && country.name;
+      this.form.phone.country = country ;
     },  
     getCategories() {
         if(typeof this.$store.state.orbitDbInstance !=undefined )
@@ -139,13 +139,18 @@ export default {
     onSubmit(evt) {
       evt.preventDefault();
        
-     //Form is valid , we add the new ads to the orbitDB database
+        //Form is valid , we add the new ads to the orbitDB database
         //Call the express server with orbit DB
         let formData = new FormData();
-        for( var i = 0; i < this.form.pictures.length; i++ ){
-        let file = this.form.pictures[i];
+       
+        formData.append('title', this.form.title);
+        formData.append('description', this.form.description);
+        formData.append('categorie', this.form.categorie);
+        formData.append('phone', JSON.stringify(this.form.phone));
 
-        formData.append('files[' + i + ']', file);
+        for( var i = 0; i < this.form.pictures.length; i++ ){
+            let file = this.form.pictures[i];
+            formData.append('files[' + i + ']', file);
         }
 
        apiService.createAds(formData).then((result)=>{

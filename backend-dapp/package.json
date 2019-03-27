@@ -12,10 +12,14 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "file-type": "^10.9.0",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
     "http-errors": "~1.6.2",
     "ipfs": "^0.33.0",
     "morgan": "~1.9.0",
     "orbit-db": "^0.19.9",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "read-chunk": "^3.1.0"
   }
 }
