@@ -3,6 +3,28 @@
     <h1 class="title">Add new Ads</h1>
 
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+        <b-form-group
+        id="adsCategorieGroup"
+        label="Ads Categorie:"
+        label-for="adsTitle"
+        description="Please select the ADS categorie"
+      >
+        <b-form-select
+          id="Categorie"
+          type="select"
+          v-model="form.categorie"         
+          required
+          placeholder="Please select a categorie"
+        >
+        <!-- This slot appears above the options from 'options' prop -->
+      <template slot="first">
+        <option :value="null" disabled>-- Please select an categorie --</option>
+      </template>
+        <option v-for="categorie in listcategories.categories" :value="categorie.id">{{ categorie.label }}</option>
+        </b-form-select>
+      </b-form-group>
+
+
       <b-form-group
         id="adsTitleGroup"
         label="Ads Title:"
@@ -65,16 +87,23 @@ export default {
       form: {
         title: "",
         description: "",
-        pictures: null
+        pictures: null,
+        categorie:""
       },
+      listcategories : null,
       show: true
     };
-  },
-  mounted() {
-   
+  } ,
+  created() {   
     
-  },
+    this.$store.subscribe((mutation, state) => {
+           if(mutation.type=='registerObitDbInstance'){
+                this.listcategories = this.$store.state.orbitDbInstance().get('categories').shift(); 
+                   
+           }
+    });
 
+  },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
@@ -110,6 +139,7 @@ export default {
       /* Reset our form values */
       this.form.title = "";
       this.form.description = "";
+      this.form.categorie = "";
       this.form.pictures = null;
 
       /* Trick to reset/clear native browser form validation state */

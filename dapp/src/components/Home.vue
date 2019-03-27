@@ -37,16 +37,13 @@ export default {
       msg: "Welcome to my First CraigList APP",
       listcategories: null
     };
-  }, 
-  mounted() {
-      
-  },
+  } ,
   created() {   
     
     this.$store.subscribe((mutation, state) => {
            if(mutation.type=='registerObitDbInstance'){
                 this.listcategories = this.$store.state.orbitDbInstance().get('categories').shift(); 
-                console.log(this.categories) ;     
+                   
            }
     });
 
