@@ -1,0 +1,17 @@
+{
+    categories:[
+        {id:"1",label :"Multimedia",icon:"laptop"},
+        {id:"2",label :"Automobiles",icon:"car"},
+        {id:"3",label :"Real Estate",icon:"building"},
+        {id:"4",label :"Services",icon:"concierge-bell"},
+        {id:"5",label :"Job search",icon:"search"},
+        {id:"6",label :"Job Offers",icon:"user-friends"},
+        {id:"7",label :"Local Events",icon:"calendar-week"},
+        {id:"8",label :"Learning",icon:"graduation-cap"},
+        {id:"9",label :"Fashion,home & garden",icon:"home"},
+        {id:"10",label :"Pets",icon:"paw"},
+        {id:"12",label :"Free Dating",icon:"heart"}
+    ]
+
+
+}
