@@ -11,7 +11,7 @@
                 <b-img slot="aside" blank blank-color="#abc" width="64" alt="placeholder" />
 
                 <h5 class="mt-0 mb-1">{{ ads.title }}</h5>
-                <p class="mb-0">{{ ads.description  }} Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                <p class="mb-0">{{ ads.description  }}</p>
             </b-media>
         
         </ul>
@@ -43,8 +43,7 @@ export default {
        },
 
        getListing(){
-            this.listing=this.$store.state.orbitDbInstance.docstore().query((doc)=> doc.categorie==this.$route.params.id);
-            console.log(this.listing);
+            this.listing=this.$store.state.orbitDbInstance.docstore().query((doc)=> doc.categorie==this.$route.params.id);             
        }
   },
   mounted(){
