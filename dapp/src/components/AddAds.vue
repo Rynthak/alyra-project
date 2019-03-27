@@ -157,18 +157,17 @@ export default {
   methods: {
     onSearch(search, loading) {
       loading(true);
-      
-      apiService.getCitie(search).then((result)=>{        
+      this.searchCitie(loading, search, this);
+    },
+    searchCitie: _.debounce((loading, search, vm) => {
+        apiService.getCitie(search).then((result)=>{     
            
-          this.citiesoptions = result.data.items
-           
+          vm.citiesoptions = result.data.items           
           loading(false);
         },(error)=>{
             console.log(error);
         }); 
-
-
-    },
+    }, 350),
     onInput({ number, isValid, country }) {
       this.form.phone.number = number;
       this.form.phone.isValid = isValid;
