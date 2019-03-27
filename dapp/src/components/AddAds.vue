@@ -134,7 +134,7 @@ export default {
     },  
     getCategories() {
         if(typeof this.$store.state.orbitDbInstance !=undefined )
-        this.categories = this.$store.state.orbitDbInstance().get('categories').shift().categories;
+        this.categories = this.$store.state.orbitDbInstance.categories;
     },
     onSubmit(evt) {
       evt.preventDefault();

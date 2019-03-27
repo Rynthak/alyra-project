@@ -28,8 +28,9 @@ export const store = new Vuex.Store({
       state.contractInstance = () => payload
     },
     registerObitDbInstance(state,payload){
-        console.log('Orbit DB instance ID: ', payload.id)
-        state.orbitDbInstance = () => payload
+        console.log('Orbit DB instance ID: ', payload.docstore.id)        
+        state.orbitDbInstance.categories = payload.categories
+        state.orbitDbInstance.docstore = () => payload.docstore
     }
 
   },

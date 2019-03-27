@@ -9,6 +9,10 @@ let state = {
   },
   contractInstance: null,
   ipfs:null,
-  orbitDbInstance:null
+  orbitDbInstance:{
+      docstore : null,
+      categories : null
+  }
+  
 }
 export default state
