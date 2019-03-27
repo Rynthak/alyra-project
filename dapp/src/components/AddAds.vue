@@ -24,6 +24,19 @@
         </b-form-select>
       </b-form-group>
 
+        <b-form-group
+        id="adsPhoneGroup"
+        label="Ads Phone:"
+        label-for="adsPhone"
+        description="Please enter your phone number"
+      >
+
+
+        <vue-tel-input required  @onInput="onInput" :preferredCountries="['us', 'gb', 'ua','fr']" >
+        </vue-tel-input>
+         
+ </b-form-group>
+
 
       <b-form-group
         id="adsTitleGroup"
@@ -88,7 +101,12 @@ export default {
         title: "",
         description: "",
         pictures: null,
-        categorie:""
+        categorie:"",
+        phone:{
+            number: '',
+            isValid: false,
+            country: undefined,
+        }
       },
       categories : [],
       show: true
@@ -107,7 +125,11 @@ export default {
      this.getCategories(); 
   },
   methods: {
-
+    onInput({ number, isValid, country }) {
+      this.form.phone.number = number;
+      this.form.phone.isValid = isValid;
+      this.form.phone.country = country && country.name;
+    },  
     getCategories() {
         if(typeof this.$store.state.orbitDbInstance !=undefined )
         this.categories = this.$store.state.orbitDbInstance().get('categories').shift().categories;
@@ -148,7 +170,11 @@ export default {
       this.form.description = "";
       this.form.categorie = "";
       this.form.pictures = null;
-
+      this.form.phone = {
+            number: '',
+            isValid: false,
+            country: undefined,
+        };
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
       this.$nextTick(() => {
