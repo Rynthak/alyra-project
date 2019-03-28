@@ -5,23 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build_contract_ropsten" : "npx truffle migrate ––reset ––compile-all --network ropsten && cp -r ./dapp/src/assets/contracts/ ./backend-dapp/assets/contracts/"
+    "build_contract_ropsten": "npx truffle migrate ––reset ––compile-all --network ropsten && cp -r ./dapp/src/assets/contracts/ ./backend-dapp/assets/contracts/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@vue/cli": "^3.5.1",
+    "@vue/cli": "^3.5.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "ipfs": "^0.33.1",    
+    "ipfs": "^0.33.1",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
     "openzeppelin-solidity": "^2.2.0",
     "orbit-db": "^0.19.9",
     "orbit-db-cli": "0.0.16",
-    "truffle-hdwallet-provider": "^1.0.5",
-    "webpack": "^4.29.6",
-    "dotenv": "^7.0.0"
+    "truffle-hdwallet-provider": "^1.0.6",
+    "webpack": "^4.29.6"
   }
 }
