@@ -80,6 +80,22 @@
       </b-form-group>
 
       <b-form-group
+        id="adsPriceGroup"
+        label="Ads Price:"
+        label-for="adsPrice"
+        prepend="$"
+        description="Please enter the ADS price(optional)"
+      >
+        <b-form-input
+          id="adsPrice"
+          type="number"
+          v-model="form.price"          
+          placeholder="Enter Ads price"
+        />
+      </b-form-group>
+
+
+      <b-form-group
         id="adsDescriptionGroup"
         label="Ads Description:"
         label-for="adsDescription"
@@ -130,6 +146,7 @@ export default {
         description: "",
         pictures: null,
         categorie:"",
+        price:"",
         phone:{
             number: '',
             isValid: false,
@@ -190,6 +207,9 @@ export default {
         formData.append('categorie', this.form.categorie);
         formData.append('phone', JSON.stringify(this.form.phone));
         formData.append('city', JSON.stringify(this.form.city));
+        if(this.form.price){
+            formData.append('price', this.form.price);
+        }
 
         for( var i = 0; i < this.form.pictures.length; i++ ){
             let file = this.form.pictures[i];
