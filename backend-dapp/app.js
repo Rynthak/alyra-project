@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 var adsRouter = require('./routes/ads');
 const dbLib = require("./lib/db.js"); // handle all db stuff.
  
-
+var ethers = require('ethers');
 
 var app = express();
 
