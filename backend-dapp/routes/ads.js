@@ -11,6 +11,10 @@ var fs = require('fs');
 
 const configCategories = require('../assets/categories.json');
 //Route for adding new ads to Orbit DB
+
+  
+
+
 router.post('/create', function(req, res, next) {   
     
     let newAds = {};
@@ -20,32 +24,30 @@ router.post('/create', function(req, res, next) {
     newAds.date_add = Date.now() / 1000 | 0;
     newAds.files=[];
     var form = new formidable.IncomingForm();
-   
     
-    form.parse(req, function(err, fields, files) {
+      
+
+     
+    form.parse(req, async function(err, fields, files) {
+        let sFileUploaded=''  
+        let sBuffer ='';
+        let ipfsFile = '';
+        for (const file in files) {
+            
+             sFileUploaded = fs.readFileSync(files[file].path);
+             sBuffer = Buffer.from(sFileUploaded);
+             ipfsFile=await global.db._ipfs.files.add(sBuffer);
+             console.log(ipfsFile);
+             newAds.files.push(ipfsFile);
+            
+        }
+       console.log(newAds); 
+
        newAds = Object.assign(fields,newAds);
        newAds.phone=JSON.parse( newAds.phone);
        newAds.city=JSON.parse( newAds.city);
-     });
-    
-    form.on('file', function (name, file){    	 
-    	let sFileUploaded = fs.readFileSync(file.path);
-        let sBuffer = Buffer.from(sFileUploaded);
+
         
-    	global.db._ipfs.files.add(sBuffer, (err, result) => {
-    		if (err) {
-    	          console.log(err);
-    	          res.status(501).json(err);
-    	    }else{
-                
-    	    	let data = result[0];
-    	    	let unencodedData= data.hash;
-    	    	const hashHex = "0x"+bs58.decode(unencodedData).slice(2).toString('hex');
-				newAds.files.push(hashHex);
-    	    }    
-    	});
-         
-    }).on('end', function() {
             global.db.put(newAds).then((hash) => {       
 
             newAds.hashIPFS=hash;
@@ -53,10 +55,13 @@ router.post('/create', function(req, res, next) {
             const hashHex = "0x"+bs58.decode(unencodedData).slice(2).toString('hex');
             newAds.hashBytes32 = hashHex;        
             //Send back to front end for contract interaction and payment
-            console.log(hash,newAds);            
+                        
             res.status(200).json(newAds);
         });  
-    }).on('error', function(err) {
+
+
+     });
+    form.on('error', function(err) {
         console.log(err);
     	res.status(501).json(err);
     });;    

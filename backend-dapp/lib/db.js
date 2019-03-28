@@ -87,7 +87,8 @@ function openDb() {
         console.log(`database string: ${db.address.toString()}`)
         console.log(`db public key: ${db.key.getPublic('hex')}`)
 
-        db.put(configCategories); 
+        db.put(configCategories);  
+
 
         // React when the database is updated.
         db.events.on('replicated', () => {
