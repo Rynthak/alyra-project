@@ -129,8 +129,7 @@ export default {
       }
       if (this.form.city != "" && this.form.city != null) {
           condition += ' && "' + this.form.city.name + '" == doc.city.name && "' + this.form.city.country + '" == doc.city.country ';
-      }
-      
+      }      
       this.listing = this.$store.state.orbitDbInstance.docstore().query(doc => {
         return eval(condition);
       });
