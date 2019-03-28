@@ -5,7 +5,12 @@
         <b-jumbotron>
             <template slot="header">{{ ads.title }}</template>
 
-            <template slot="lead"></template>
+            <template slot="lead">
+                <flag :iso="ads.city.country" />            
+                {{ ads.city.name }}
+                <font-awesome-icon :icon="[ 'fas', 'phone' ]" />
+                 <flag :iso="ads.phone.country" /> {{ ads.phone.number }}
+            </template>
 
             <hr class="my-4">
 
