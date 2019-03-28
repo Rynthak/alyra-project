@@ -10,6 +10,7 @@
                 {{ ads.city.name }}
                 <font-awesome-icon :icon="[ 'fas', 'phone' ]" />
                  <flag :iso="ads.phone.country" /> {{ ads.phone.number }}
+                 <span v-if="ads.price"><font-awesome-icon :icon="[ 'fas', 'dollar-sign' ]" />{{ ads.price }}</span>
             </template>
 
             <hr class="my-4">

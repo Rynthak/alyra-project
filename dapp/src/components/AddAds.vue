@@ -3,7 +3,7 @@
     <h1 class="title">Add new Ads</h1>
 
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-        <b-form-group
+      <b-form-group
         id="adsCategorieGroup"
         label="Ads Categorie:"
         label-for="adsTitle"
@@ -12,57 +12,59 @@
         <b-form-select
           id="Categorie"
           type="select"
-          v-model="form.categorie"         
+          v-model="form.categorie"
           required
           placeholder="Please select a categorie"
         >
-        <!-- This slot appears above the options from 'options' prop -->
-      <template slot="first">
-        <option :value="null" disabled>-- Please select an categorie --</option>
-      </template>
-        <option v-for="categorie in categories" :value="categorie.id" :key="categorie.id">{{ categorie.label }}</option>
+          <!-- This slot appears above the options from 'options' prop -->
+          <template slot="first">
+            <option :value="null" disabled>-- Please select an categorie --</option>
+          </template>
+          <option
+            v-for="categorie in categories"
+            :value="categorie.id"
+            :key="categorie.id"
+          >{{ categorie.label }}</option>
         </b-form-select>
       </b-form-group>
 
-        <b-form-group
+      <b-form-group
         id="adsPhoneGroup"
         label="Ads Phone:"
         label-for="adsPhone"
         description="Please enter your phone number"
       >
+        <vue-tel-input required @onInput="onInput" :preferredCountries="['us', 'gb', 'ua','fr']"></vue-tel-input>
+      </b-form-group>
 
-
-        <vue-tel-input required  @onInput="onInput" :preferredCountries="['us', 'gb', 'ua','fr']" >
-        </vue-tel-input>
-         
- </b-form-group>
-
-        <b-form-group
+      <b-form-group
         id="adsCitieGroup"
         label="Ads Citie:"
         label-for="adsCitie"
         description="Please select your citie"
       >
-        <v-select  :filterable="false" :options="citiesoptions" label="name"  v-model="form.city"  @search="onSearch">
-            <template slot="no-options">
-            type to search cities..
-            </template>
-            <template slot="option" slot-scope="option">
-            <div class="d-center">     
-                <flag :iso="option.country" />            
-                {{ option.name }}
-                </div>
-            </template>
-            <template slot="selected-option" slot-scope="option">
-            <div class="selected d-center"> 
-                 <flag :iso="option.country" />                  
-                {{ option.name }}
+        <v-select
+          :filterable="false"
+          :options="citiesoptions"
+          label="name"
+          v-model="form.city"
+          @search="onSearch"
+        >
+          <template slot="no-options">type to search cities..</template>
+          <template slot="option" slot-scope="option">
+            <div class="d-center">
+              <flag :iso="option.country"/>
+              {{ option.name }}
             </div>
-            </template>
-
+          </template>
+          <template slot="selected-option" slot-scope="option">
+            <div class="selected d-center">
+              <flag :iso="option.country"/>
+              {{ option.name }}
+            </div>
+          </template>
         </v-select>
-         </b-form-group>
-
+      </b-form-group>
 
       <b-form-group
         id="adsTitleGroup"
@@ -89,11 +91,10 @@
         <b-form-input
           id="adsPrice"
           type="number"
-          v-model="form.price"          
+          v-model="form.price"
           placeholder="Enter Ads price"
         />
       </b-form-group>
-
 
       <b-form-group
         id="adsDescriptionGroup"
@@ -120,7 +121,6 @@
       >
         <b-form-file
           id="adsPictures"
-         
           v-model="form.pictures"
           :state="Boolean(form.pictures)"
           placeholder="Choose pictures picture..."
@@ -131,46 +131,51 @@
       </b-form-group>
 
       <button class="btn btn-primary">Add new ADS</button>
+      <strong v-show="submitting">Submitting...</strong>
+      <p v-show="successMessage" class="text-success">
+        <strong>You've been registerd!</strong>
+        <br>You will be redirected to categorie page
+        <strong>once the block will be mined!</strong>
+      </p>
     </b-form>
   </b-container>
 </template>
 <script>
-import {APIAdsService} from '../services/APIAdsService'
-import _ from 'lodash';
+import { APIAdsService } from "../services/APIAdsService";
+import _ from "lodash";
 const apiService = new APIAdsService();
 export default {
   data() {
-    return {       
+    return {
       form: {
         title: "",
         description: "",
         pictures: null,
-        categorie:"",
-        price:"",
-        phone:{
-            number: '',
-            isValid: false,
-            country: undefined,
+        categorie: "",
+        price: "",
+        phone: {
+          number: "",
+          isValid: false,
+          country: undefined
         },
-        city : ""
-       
+        city: ""
       },
-      citiesoptions:[],
-      categories : [],
-      show: true
+      citiesoptions: [],
+      categories: [],
+      show: true,
+      submitting: false,
+      successMessage: false
     };
-  } ,
-  created() {   
-    
+  },
+  created() {
     this.$store.subscribe((mutation, state) => {
-           if(mutation.type=='registerObitDbInstance'){
-                 this.getCategories();                   
-           }
+      if (mutation.type == "registerObitDbInstance") {
+        this.getCategories();
+      }
     });
-
   },
   mounted() {
-     this.getCategories(); 
+    this.getCategories();
   },
   methods: {
     onSearch(search, loading) {
@@ -178,67 +183,75 @@ export default {
       this.searchCitie(loading, search, this);
     },
     searchCitie: _.debounce((loading, search, vm) => {
-        apiService.getCitie(search).then((result)=>{     
-           
-          vm.citiesoptions = result.data.items           
+      apiService.getCitie(search).then(
+        result => {
+          vm.citiesoptions = result.data.items;
           loading(false);
-        },(error)=>{
-            console.log(error);
-        }); 
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }, 350),
     onInput({ number, isValid, country }) {
       this.form.phone.number = number;
       this.form.phone.isValid = isValid;
-      this.form.phone.country = country ;
-    },  
+      this.form.phone.country = country;
+    },
     getCategories() {
-        if(typeof this.$store.state.orbitDbInstance !=undefined )
+      if (typeof this.$store.state.orbitDbInstance != undefined)
         this.categories = this.$store.state.orbitDbInstance.categories;
     },
     onSubmit(evt) {
       evt.preventDefault();
-       
-        //Form is valid , we add the new ads to the orbitDB database
-        //Call the express server with orbit DB
-        let formData = new FormData();
-       
-        formData.append('title', this.form.title);
-        formData.append('description', this.form.description);
-        formData.append('categorie', this.form.categorie);
-        formData.append('phone', JSON.stringify(this.form.phone));
-        formData.append('city', JSON.stringify(this.form.city));
-        if(this.form.price){
-            formData.append('price', this.form.price);
-        }
+      this.submitting = true    
+      this.successMessage = false
 
-        for( var i = 0; i < this.form.pictures.length; i++ ){
-            let file = this.form.pictures[i];
-            formData.append('files[' + i + ']', file);
-        }
+      //Form is valid , we add the new ads to the orbitDB database
+      //Call the express server with orbit DB
+      let formData = new FormData();
 
-       apiService.createAds(formData).then((result)=>{
+      formData.append("title", this.form.title);
+      formData.append("description", this.form.description);
+      formData.append("categorie", this.form.categorie);
+      formData.append("phone", JSON.stringify(this.form.phone));
+      formData.append("city", JSON.stringify(this.form.city));
+      if (this.form.price) {
+        formData.append("price", this.form.price);
+      }
 
-         
-        //Get New ADS added to orbitDB
-        this.$store.state.contractInstance().payNewAds(result.data._id,{
-            value: this.$store.state.web3.web3Instance().toWei('0.1', 'ether'),
-            from: this.$store.state.web3.coinbase
-        },(err, result) => {
-            if (err) {
-            console.log(err);
-            //this.pending = false;
-            } else {
+      for (var i = 0; i < this.form.pictures.length; i++) {
+        let file = this.form.pictures[i];
+        formData.append("files[" + i + "]", file);
+      }
+      this.submitting = false;     
+      apiService.createAds(formData).then(
+        result => {
+          //Get New ADS added to orbitDB
+          this.$store.state.contractInstance().payNewAds(
+            result.data._id,
+            {
+              value: this.$store.state.web3
+                .web3Instance()
+                .toWei("0.1", "ether"),
+              from: this.$store.state.web3.coinbase
+            },
+            (err, result) => {
+              if (err) {
+                console.log(err);
+                //this.pending = false;
+              } else {
                 console.log(result);
+                this.successMessage = true
+                this.$router.push("/")
+              }
             }
-        });
-
-         
-        },(error)=>{
-            console.log(error);
-        });   
-
-
-      
+          );
+        },
+        error => {
+          console.log(error);
+        }
+      );
     },
     onReset(evt) {
       evt.preventDefault();
@@ -248,10 +261,10 @@ export default {
       this.form.categorie = "";
       this.form.pictures = null;
       this.form.phone = {
-            number: '',
-            isValid: false,
-            country: undefined,
-        };
+        number: "",
+        isValid: false,
+        country: undefined
+      };
       this.form.city = "";
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
