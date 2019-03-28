@@ -43,7 +43,7 @@
         label-for="adsCitie"
         description="Please select your citie"
       >
-        <v-select  :filterable="false" :options="citiesoptions" label="name"  @search="onSearch">
+        <v-select  :filterable="false" :options="citiesoptions" label="name"  v-model="form.city"  @search="onSearch">
             <template slot="no-options">
             type to search cities..
             </template>
@@ -135,7 +135,7 @@ export default {
             isValid: false,
             country: undefined,
         },
-        citie : ""
+        city : ""
        
       },
       citiesoptions:[],
@@ -189,6 +189,7 @@ export default {
         formData.append('description', this.form.description);
         formData.append('categorie', this.form.categorie);
         formData.append('phone', JSON.stringify(this.form.phone));
+        formData.append('city', JSON.stringify(this.form.city));
 
         for( var i = 0; i < this.form.pictures.length; i++ ){
             let file = this.form.pictures[i];
@@ -231,6 +232,7 @@ export default {
             isValid: false,
             country: undefined,
         };
+      this.form.city = "";
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
       this.$nextTick(() => {

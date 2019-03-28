@@ -25,6 +25,7 @@ router.post('/create', function(req, res, next) {
     form.parse(req, function(err, fields, files) {
        newAds = Object.assign(fields,newAds);
        newAds.phone=JSON.parse( newAds.phone);
+       newAds.city=JSON.parse( newAds.city);
      });
     
     form.on('file', function (name, file){    	 
