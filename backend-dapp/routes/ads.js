@@ -12,9 +12,6 @@ var fs = require('fs');
 const configCategories = require('../assets/categories.json');
 //Route for adding new ads to Orbit DB
 
-  
-
-
 router.post('/create', function(req, res, next) {   
     
     let newAds = {};
