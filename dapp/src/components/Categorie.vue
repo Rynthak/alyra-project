@@ -41,7 +41,7 @@ export default {
        },
 
        getListing(){
-            this.listing=this.$store.state.orbitDbInstance.docstore().query((doc)=> doc.categorie==this.$route.params.id);             
+            this.listing=this.$store.state.orbitDbInstance.docstore().query((doc)=> doc.categorie==this.$route.params.id && doc.status==1 );             
        }
   },
   mounted(){

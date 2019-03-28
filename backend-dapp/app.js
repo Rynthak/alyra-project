@@ -85,12 +85,11 @@ provider.getNetwork().then((r) => {
     contractInstance.on('Ads', (ads, owner, event) => {
         //ON PIN LE HASH DE L'EVENT
         console.log(ads,owner);
-        const id = parseInt(ads, 2).toString(16);
-        console.log(id);
-
-        const doc = db.get(id);
-
-        //console.log(doc);
+        const doc = db.get(ads).shift();
+        doc.status = 1;
+        console.log("New ads paid id : "+ ads);
+        db.put(doc);
+        
     });
 
 
