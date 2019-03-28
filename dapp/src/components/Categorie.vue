@@ -22,7 +22,7 @@ export default {
     return {
       msg: "Categorie listing : ",       
       categorie:null,
-      listing : []
+      listing : []      
     };
   } ,
  components: {
