@@ -12,7 +12,9 @@ var ethers = require('ethers');
 
 
 //Config section 
+require('dotenv').config()
 const configNetwork = require('./config/network.json'); 
+const contractConfig = require('./assets/contracts/ClassifiedAds.json');
 
 console.log(configNetwork);
 
