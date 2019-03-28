@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import AddAds from '@/components/AddAds'
 import Categorie from '@/components/Categorie'
 import Search from '@/components/Search'
+import SingleAds from '@/components/SingleAds'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
     path: '/search',
     name: 'Search',
     component: Search
+  },
+  {
+    path: '/ads/:id',
+    name: 'SingleAds',
+    component: SingleAds
   }
 
   ]
