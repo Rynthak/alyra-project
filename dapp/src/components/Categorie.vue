@@ -5,18 +5,17 @@
         <h1 v-else>{{ msg }}</h1>
     </div>
     <div class="container">
-        <ul class="list-unstyled">
-       
-           <b-media tag="li" v-for="ads in listing" :key="ads.id">                
-                <h5 class="mt-0 mb-1">{{ ads.title }}</h5>               
-            </b-media>
-        
+        <ul class="list-unstyled">        
+            <template v-for="ads in listing">
+                <single-ads-list :ads="ads"></single-ads-list>
+            </template>        
         </ul>
     </div>
   </div>
 </template>
 
 <script>
+import SingleAdsList from './SingleAdsList';
 export default {
   name: "Categorie",
   data() {
@@ -26,7 +25,9 @@ export default {
       listing : []
     };
   } ,
- 
+ components: {
+      SingleAdsList,
+    },
   methods: {
        getCategorie() {
            for(var key in this.$store.state.orbitDbInstance.categories ){
