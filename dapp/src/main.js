@@ -32,6 +32,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(VueTelInput)
 Vue.use(FlagIcon);
+Vue.use(require('vue-moment'));
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('v-select', vSelect)
 
