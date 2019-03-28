@@ -20,7 +20,7 @@
       <template slot="first">
         <option :value="null" disabled>-- Please select an categorie --</option>
       </template>
-        <option v-for="categorie in categories" :value="categorie.id">{{ categorie.label }}</option>
+        <option v-for="categorie in categories" :value="categorie.id" :key="categorie.id">{{ categorie.label }}</option>
         </b-form-select>
       </b-form-group>
 
