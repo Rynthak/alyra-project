@@ -7,9 +7,15 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var adsRouter = require('./routes/ads');
-const dbLib = require("./lib/db.js"); // handle all db stuff.
- 
+var dbLib = require("./lib/db.js"); // handle all db stuff. 
 var ethers = require('ethers');
+
+
+//Config section 
+const configNetwork = require('./config/network.json'); 
+
+console.log(configNetwork);
+
 
 var app = express();
 
@@ -57,4 +63,11 @@ async function startDB() {
     
 }
 startDB();
+
+
+var provider = global.provider =new ethers.providers.JsonRpcProvider("http://localhost:8545");
+
+
+
+
 module.exports = app;
