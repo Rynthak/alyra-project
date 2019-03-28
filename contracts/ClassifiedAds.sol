@@ -7,17 +7,19 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract ClassifiedAds is Ownable{
 	using SafeMath for uint256;	
-	bytes32[] public ads;
-	mapping (bytes32 => address) public  ads_owner;
+	string[] public ads;	 
+	mapping (address => string[]) public  ads_owner;
+	mapping (address => uint256) public  ads_owner_nb;
  	event Ads(
-        bytes32 ads,
+        string ads,
         address owner
     );
 	 
-	function payNewAds(bytes32 _ads) public payable{
+	function payNewAds(string memory _ads) public payable{
 		require(msg.value  >= 100 finney,"La somme envoyé n'est pas suffisante");
-		ads.push(_ads);
-		ads_owner[_ads]=msg.sender;		
+		ads.push(_ads);		 
+		ads_owner[msg.sender].push(_ads);	
+		ads_owner_nb[msg.sender]=ads_owner_nb[msg.sender].add(1);
 		emit Ads(_ads,msg.sender);		
 	} 
 	

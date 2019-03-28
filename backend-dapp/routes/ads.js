@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var bs58 = require('bs58');
 var IPFS = require('ipfs');
 var cities = require("all-the-cities")
 var formidable = require('formidable');
 var readChunk = require('read-chunk');
 var fileType = require('file-type');
 var fs = require('fs');
+const uuidv4 = require('uuid/v4');
 
 
 const configCategories = require('../assets/categories.json');
@@ -29,7 +29,7 @@ router.post('/create', function(req, res, next) {
     
     let newAds = {};
      
-    newAds._id=Math.random();     
+    newAds._id=  uuidv4();  
     newAds.status = 0;
     newAds.date_add = Date.now() / 1000 | 0;
     newAds.files=[];
@@ -42,30 +42,20 @@ router.post('/create', function(req, res, next) {
         let sFileUploaded=''  
         let sBuffer ='';
         let ipfsFile = '';
-        for (const file in files) {
-            
+        for (const file in files) {            
              sFileUploaded = fs.readFileSync(files[file].path);
              sBuffer = Buffer.from(sFileUploaded);
-             ipfsFile=await global.db._ipfs.files.add(sBuffer);
-             console.log(ipfsFile);
-             newAds.files.push(ipfsFile);
-            
+             ipfsFile=await global.db._ipfs.files.add(sBuffer);            
+             newAds.files.push(ipfsFile);           
         }
-       console.log(newAds); 
+         
 
        newAds = Object.assign(fields,newAds);
        newAds.phone=JSON.parse( newAds.phone);
        newAds.city=JSON.parse( newAds.city);
 
         
-            global.db.put(newAds).then((hash) => {       
-
-            newAds.hashIPFS=hash;
-            let unencodedData= hash;
-            const hashHex = "0x"+bs58.decode(unencodedData).slice(2).toString('hex');
-            newAds.hashBytes32 = hashHex;        
-            //Send back to front end for contract interaction and payment
-                        
+       global.db.put(newAds).then((hash) => {                         
             res.status(200).json(newAds);
         });  
 
@@ -80,26 +70,22 @@ router.post('/create', function(req, res, next) {
 });
  
 
-router.get('/getcategories', function(req, res, next) {  
-
-   
+router.get('/getcategories', function(req, res, next) {   
     const categories =  global.db.query((doc) => doc._id =='categories');
-    console.log(configCategories.categories);
-    
     res.status(200).json(categories);
-
 });
 
 router.post('/getcitie', function(req, res, next) { 
     let search ={};
-    console.log(req.body.citie);
+     
     search.items = cities.filter(city => {    
        return city.name.match(req.body.citie);
     })   
     res.status(200).json(search);
 });
 
-
+ 
+ 
 
 
 module.exports = router;

@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 var adsRouter = require('./routes/ads');
 var dbLib = require("./lib/db.js"); // handle all db stuff. 
 var ethers = require('ethers');
-
+ 
 
 //Config section 
 require('dotenv').config()
@@ -68,16 +68,29 @@ async function startDB() {
 }
 startDB();
 
+var decodeHash32 = global.decodeHash32 = function (pin){
+	 const hashHex = "1220" + pin.slice(2)
+	 const hashBytes = Buffer.from(hashHex, 'hex');
+	 const HashToPIn = bs58.encode(hashBytes);
+	 return HashToPIn;
+}
+
+
 //Init ethers provider
 var provider = global.provider = new ethers.providers.JsonRpcProvider(configNetwork[process.env.networkid].url + process.env.API_KEY);
 provider.getNetwork().then((r) => {
-    console.log("Ethereum connecté sur ", r)
+    console.log("Ethereum connecté sur ", r.name)
     //On écoute l'evenement Ads
     const contractInstance = new ethers.Contract(contractConfig.networks[process.env.networkid].address, contractConfig.abi, provider)
     contractInstance.on('Ads', (ads, owner, event) => {
         //ON PIN LE HASH DE L'EVENT
         console.log(ads,owner);
- 
+        const id = parseInt(ads, 2).toString(16);
+        console.log(id);
+
+        const doc = db.get(id);
+
+        //console.log(doc);
     });
 
 
