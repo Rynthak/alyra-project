@@ -45,8 +45,8 @@ router.post('/create', function(req, res, next) {
         for (const file in files) {            
              sFileUploaded = fs.readFileSync(files[file].path);
              sBuffer = Buffer.from(sFileUploaded);
-             ipfsFile=await global.db._ipfs.files.add(sBuffer);            
-             newAds.files.push(ipfsFile);           
+             ipfsFile=await global.db._ipfs.files.add(sBuffer);                        
+             newAds.files.push(ipfsFile[0].hash);           
         }
          
 

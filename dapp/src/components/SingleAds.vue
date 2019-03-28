@@ -18,8 +18,8 @@
             <div id="carouselExampleIndicators" v-if="ads.files.length" class="carousel slide" data-ride="carousel">
                  
                 <div class="carousel-inner">
-                    <div :class="['carousel-item',(index === 0 ? 'active' : '')]" v-for="(file, index) in ads.files" :key="file.hash">
-                        <img class="d-block w-100"  :src="'https://ipfs.io/ipfs/'+file.shift().hash" >
+                    <div :class="['carousel-item',(index === 0 ? 'active' : '')]" v-for="(file, index) in ads.files" :key="index">
+                        <img class="d-block w-100"  :src="'https://ipfs.io/ipfs/'+file" >
                     </div>
                     
                 </div>
@@ -53,7 +53,7 @@ export default {
   methods: {
        getAds() {
             this.ads=this.$store.state.orbitDbInstance.docstore().get(this.$route.params.id).shift();
-            console.log(this.ads)            
+                  
        }
   },
   mounted(){      
