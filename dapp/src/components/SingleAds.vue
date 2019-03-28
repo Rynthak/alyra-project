@@ -10,15 +10,11 @@
             <hr class="my-4">
 
             <p>{{ ads.description }}</p>
-            <div id="carouselExampleIndicators" v-if="ads.files" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
+            <div id="carouselExampleIndicators" v-if="ads.files.length" class="carousel slide" data-ride="carousel">
+                 
                 <div class="carousel-inner">
-                    <div class="carousel-item" v-for="file in ads.files" :key="file.hash">
-                        <img class="d-block w-100"  :src="'https://ipfs.io/ipfs/'+file.hash" >
+                    <div :class="['carousel-item',(index === 0 ? 'active' : '')]" v-for="(file, index) in ads.files" :key="file.hash">
+                        <img class="d-block w-100"  :src="'https://ipfs.io/ipfs/'+file.shift().hash" >
                     </div>
                     
                 </div>
