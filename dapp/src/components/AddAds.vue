@@ -120,6 +120,7 @@
 </template>
 <script>
 import {APIAdsService} from '../services/APIAdsService'
+import _ from 'lodash';
 const apiService = new APIAdsService();
 export default {
   data() {
