@@ -5,10 +5,9 @@ module.exports = {
     contracts_build_directory: "./dapp/src/assets/contracts",
     networks: {
         ganache: {
-            provider: function () {
-                return new HDWalletProvider(MNEMONIC, process.env["GANACHE_PROVIDER"])
-            },
-            network_id: "5777"
+            host: process.env["GANACHE_PROVIDER"],            
+            port: process.env["GANACHE_PORT"],
+            network_id: 5777
         },
         ropsten: {
             provider: function () {
