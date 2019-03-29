@@ -13,7 +13,6 @@ var ethers = require('ethers');
 
 //Config section 
 require('dotenv').config()
-const configNetwork = require('./config/network.json');
 const contractConfig = require('./assets/contracts/ClassifiedAds.json');
 
 
@@ -77,7 +76,7 @@ var decodeHash32 = global.decodeHash32 = function (pin){
 
 
 //Init ethers provider
-var provider = global.provider = new ethers.providers.JsonRpcProvider(configNetwork[process.env.networkid].url + process.env.API_KEY);
+var provider = global.provider = new ethers.providers.JsonRpcProvider(process.env.networkurl);
 provider.getNetwork().then((r) => {
     console.log("Ethereum connecté sur ", r.name)
     //On écoute l'evenement Ads

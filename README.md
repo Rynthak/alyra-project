@@ -52,7 +52,7 @@ npm install
 ```sh 
 cp .env.sample .env
 ```
-Replace API_KEY with infura api key , you can get one here ([infura.io](https://infura.io/))  
+Replace networkurl with your RPC provider **(http://localhost:8545 for ganache)** or use  infura api key , you can get one here ([infura.io](https://infura.io/))  
 Replace networkid with the id of network where the contracs were deployed  
 
 #### run backend
