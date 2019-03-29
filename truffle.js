@@ -1,7 +1,6 @@
 require('dotenv').config();
 var HDWalletProvider = require("truffle-hdwallet-provider");
-const MNEMONIC = process.env["MNEMONIC"];
-const API_KEY = process.env["API_KEY"];
+const MNEMONIC = process.env["MNEMONIC"]; 
 module.exports = {
     contracts_build_directory: "./dapp/src/assets/contracts",
     networks: {
@@ -12,7 +11,7 @@ module.exports = {
         },
         ropsten: {
             provider: function () {
-                return new HDWalletProvider(MNEMONIC, "https://ropsten.infura.io/"+API_KEY)
+                return new HDWalletProvider(MNEMONIC, "https://ropsten.infura.io/")
             },
             network_id: 3,
             gas: 4000000 //make sure this gas allocation isn't over 4M, which is the max
