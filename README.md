@@ -55,6 +55,30 @@ Replace networkid with the id of network where the contracs were deployed
 npm run start
 ```
 Copy the database string for for update frontend config , ex : **database string: /orbitdb/QmAwesomeHash/dapp-sells-docstore**    
+Backend app will start on **http://localhost:3000/**  
+
+## Frontend install
+
+```sh 
+cd dapp
+npm install
+```
+
+#### update config
+
+for dev env.
+
+```sh 
+ cp config/dev.env.js.sample  config/dev.env.js
+```
+Replace **ORBITDB_ADDRESS** with the OrbitDb from the backend
+Replace **API_URL** with the backend url , ex : **http://localhost:3000/**  
+
+#### run frontend
+```sh 
+npm run dev
+```
+frontend will be  available under **http://localhost:8080/**
 
 ## Dependencies
 
