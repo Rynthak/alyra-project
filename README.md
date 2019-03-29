@@ -10,7 +10,31 @@ npm install
 
 ## Contract Compilation
 
- 
+#### Update configuration
+```sh 
+cp .env.sample .env
+```
+Don't commit .env
+Replace MNEMONIC by your mnenonic of your private key
+Replace API_KEY with infura api key , you can get one here ([infura.io](https://infura.io/))
+
+
+
+
+#### Deploy contract on ropsten
+```sh 
+npm install 
+npx truffle migrate ––reset ––compile-all --network ropsten
+```
+
+For adding new network just edit truffle.js
+
+Copy Contracts builds into backend app too
+
+```sh 
+cp -r ./dapp/src/assets/contracts/ ./backend-dapp/assets/contracts/
+```
+
 
 ## Dependencies
 
