@@ -5,13 +5,14 @@ module.exports = {
     contracts_build_directory: "./dapp/src/assets/contracts",
     networks: {
         ganache: {
-            host: "127.0.0.1",
-            port: 9545,
+            provider: function () {
+                return new HDWalletProvider(MNEMONIC, process.env["GANACHE_PROVIDER"])
+            },
             network_id: "5777"
         },
         ropsten: {
             provider: function () {
-                return new HDWalletProvider(MNEMONIC, "https://ropsten.infura.io/")
+                return new HDWalletProvider(MNEMONIC, process.env["ROPSTEN_PROVIDER"])
             },
             network_id: 3,
             gas: 4000000 //make sure this gas allocation isn't over 4M, which is the max
