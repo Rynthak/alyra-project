@@ -14,8 +14,8 @@ npm install
 ```sh 
 cp .env.sample .env
 ```
-Don't commit .env
-Replace MNEMONIC by your mnenonic of your private key
+Don't commit .env  
+Replace MNEMONIC by your mnenonic of your private key  
 Replace API_KEY with infura api key , you can get one here ([infura.io](https://infura.io/))
 
 
