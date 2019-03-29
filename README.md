@@ -99,6 +99,16 @@ frontend will be  available under **http://localhost:8080/**
 
 None
 
+## @TODO
+
+- Add user profile
+- Delete ads
+- Improve Ux
+- Add City page listing
+- Replace infura web3 provider by custom provider
+- Add more network for contract
+
+
 ## License
 
 ISC
