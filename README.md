@@ -8,6 +8,11 @@
 npm install 
 ```
 
+## Screenshot
+
+![Running app](https://i.ibb.co/dM45t16/Capture-d-e-cran-2019-03-29-a-12-10-32.png)
+
+
 ## Contract Compilation
 
 #### Update configuration
