@@ -34,7 +34,7 @@
         label-for="adsPhone"
         description="Please enter your phone number"
       >
-        <vue-tel-input required @onInput="onInput" :preferredCountries="['us', 'gb', 'ua','fr']"></vue-tel-input>
+        <vue-tel-input required @onInput="onInput" :preferredCountries="['fr']"></vue-tel-input>
       </b-form-group>
 
       <b-form-group
