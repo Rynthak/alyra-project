@@ -86,7 +86,7 @@ provider.getNetwork().then((r) => {
         //ON PIN LE HASH DE L'EVENT
         console.log(ads,owner);
         const doc = db.get(ads).shift();
-        
+        doc.owner = owner;
         doc.status = 1;
         //doc.files = JSON.parse(JSON.stringify(doc.files)) ;
         
