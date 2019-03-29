@@ -15,9 +15,12 @@ const configCategories = require('../assets/categories.json');
  
 router.get('/flushall',  async function(req, res, next) {  
      const all=global.db.get('');
-     console.log(all);
+     let temp ={}
      for(var key in all){
-         global.db.del(all[key]._id);
+         temp._id=all[key]._id;
+         temp.status = -1;
+         global.db.put(doc);
+         temp ={};
      }
      await global.db.load();
      res.status(200).json(all);
