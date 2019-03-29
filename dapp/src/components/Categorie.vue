@@ -4,18 +4,14 @@
       <h1 v-if="categorie">{{ msg }} {{ categorie.label }}</h1>
       <h1 v-else>{{ msg }}</h1>
     </div>
-    <div class="container">
-      <ul class="list-unstyled">
-        <template v-for="ads in listing">
-          <single-ads-list :ads="ads"></single-ads-list>
-        </template>
-      </ul>
+    <div class="container">              
+        <AdsBox :listing="listing"></AdsBox>
     </div>
   </div>
 </template>
 
 <script>
-import SingleAdsList from "./SingleAdsList";
+import AdsBox from "./AdsBox";
 export default {
   name: "Categorie",
   data() {
@@ -26,7 +22,7 @@ export default {
     };
   },
   components: {
-    SingleAdsList
+    AdsBox
   },
   methods: {
     getCategorie() {

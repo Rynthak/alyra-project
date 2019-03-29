@@ -60,10 +60,8 @@
 
           <b-button type="submit" variant="primary">Search</b-button>
         </b-form>
-        <ul class="list-unstyled">
-          <template v-if="listing" v-for="ads in listing">
-            <single-ads-list :ads="ads"></single-ads-list>
-          </template>
+       
+          <AdsBox :listing="listing"></AdsBox>
         </ul>
       </div>
     </div>
@@ -73,7 +71,7 @@
 import { APIAdsService } from "../services/APIAdsService";
 import _ from "lodash";
 const apiService = new APIAdsService();
-import SingleAdsList from "./SingleAdsList";
+import AdsBox from "./AdsBox";
 export default {
   name: "Search",
   data() {
@@ -89,7 +87,7 @@ export default {
     };
   },
   components: {
-    SingleAdsList
+    AdsBox
   },
   created() {
     this.$store.subscribe((mutation, state) => {
