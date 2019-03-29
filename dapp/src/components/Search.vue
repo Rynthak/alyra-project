@@ -15,8 +15,8 @@
             <v-select
               :filterable="false"
               :options="citiesoptions"
-              label="name"
               v-model="form.city"
+              label="name"
               @search="onSearch"
             >
               <template slot="no-options">type to search cities..</template>
@@ -42,8 +42,8 @@
           >
             <b-form-select
               id="Categorie"
-              type="select"
               v-model="form.categorie"
+              type="select"
               placeholder="Select a categorie"
             >
               <!-- This slot appears above the options from 'options' prop -->
@@ -128,8 +128,13 @@ export default {
         condition += ' && "' + this.form.categorie + '" == doc.categorie';
       }
       if (this.form.city != "" && this.form.city != null) {
-          condition += ' && "' + this.form.city.name + '" == doc.city.name && "' + this.form.city.country + '" == doc.city.country ';
-      }      
+        condition +=
+          ' && "' +
+          this.form.city.name +
+          '" == doc.city.name && "' +
+          this.form.city.country +
+          '" == doc.city.country ';
+      }
       this.listing = this.$store.state.orbitDbInstance.docstore().query(doc => {
         return eval(condition);
       });

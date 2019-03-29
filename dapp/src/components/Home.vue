@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-        <h1>{{ msg }}</h1>
+      <h1>{{ msg }}</h1>
     </div>
     <div class="container">
       <div class="col-xs-12 content-box layout-section">
@@ -16,14 +16,23 @@
               </h2>
             </div>
           </div>
-           
-          <b-col cols="12" md="3" lg="2" sm="2" xs="4" class="f-category" v-for="categorie in categories" :key="categorie.id">
-            <router-link   :to="{ name: 'Categorie', params: { id: categorie.id }}">
-            <a>
-              <font-awesome-icon :icon="[ 'fas', categorie.icon ]" size="6x"/>
-              <h6>{{ categorie.label }}</h6>
-            </a>
-          </router-link>
+
+          <b-col
+            cols="12"
+            md="3"
+            lg="2"
+            sm="2"
+            xs="4"
+            class="f-category"
+            v-for="categorie in categories"
+            :key="categorie.id"
+          >
+            <router-link :to="{ name: 'Categorie', params: { id: categorie.id }}">
+              <a>
+                <font-awesome-icon :icon="[ 'fas', categorie.icon ]" size="6x"/>
+                <h6>{{ categorie.label }}</h6>
+              </a>
+            </router-link>
           </b-col>
         </b-row>
       </div>
@@ -39,37 +48,30 @@ export default {
       msg: "Welcome to my First CraigList APP",
       categories: []
     };
-  } ,
- 
-  methods: {
-       getCategories() {
-           if(typeof this.$store.state.orbitDbInstance !=undefined )
-           this.categories = this.$store.state.orbitDbInstance.categories;
-       }
   },
 
-  created() {   
-    
-    this.$store.subscribe((mutation, state) => {
-           if(mutation.type=='registerObitDbInstance'){
-                 this.getCategories();                   
-           }
-    });
+  methods: {
+    getCategories() {
+      if (typeof this.$store.state.orbitDbInstance != undefined)
+        this.categories = this.$store.state.orbitDbInstance.categories;
+    }
+  },
 
+  created() {
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type == "registerObitDbInstance") {
+        this.getCategories();
+      }
+    });
   },
   mounted() {
-     this.getCategories();     
-  },
-
-
+    this.getCategories();
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
- 
- 
-
 .layout-section {
   margin-bottom: 0;
 }
