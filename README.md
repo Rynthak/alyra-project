@@ -1,16 +1,16 @@
 # Info
 
-"CraigList" type application using IPFS for storage and etherium for payment  
+"CraigList" type application using IPFS for storage and etherium for payment 
+
+## Screenshot
+
+![Running app](https://i.ibb.co/dM45t16/Capture-d-e-cran-2019-03-29-a-12-10-32.png)
 
 ## Installation
 
 ```sh
 npm install 
 ```
-
-## Screenshot
-
-![Running app](https://i.ibb.co/dM45t16/Capture-d-e-cran-2019-03-29-a-12-10-32.png)
 
 
 ## Contract Compilation
