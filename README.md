@@ -105,6 +105,7 @@ None
 - Delete ads
 - Improve Ux
 - Add City page listing
+- Add price filter
 - Replace infura web3 provider by custom provider
 - Add more network for contract
 
