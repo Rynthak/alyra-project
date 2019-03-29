@@ -2,7 +2,7 @@
 
 ## Info
 
-"CraigList" type application using IPFS for storage and etherium for payment
+"CraigList" type application using IPFS for storage and etherium for payment  
 
 ## Installation
 
