@@ -59,8 +59,8 @@ function openDb() {
         const orbitdb = new OrbitDB(ipfs)
 
         const access = {
-          // Give write access to everyone
-          write: ['*'],
+          // Give write access to who boostrap the node
+          write: [orbitdb.key.getPublic('hex')],
         }
 
         // Load the DB.
