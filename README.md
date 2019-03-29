@@ -35,6 +35,26 @@ Copy Contracts builds into backend app too
 cp -r ./dapp/src/assets/contracts/ ./backend-dapp/assets/contracts/
 ```
 
+## Backend install
+
+#### install backend
+
+```sh 
+cd backend-dapp
+npm install
+```
+#### update config
+```sh 
+cp .env.sample .env
+```
+Replace API_KEY with infura api key , you can get one here ([infura.io](https://infura.io/))  
+Replace networkid with the id of network where the contracs were deployed  
+
+#### run backend
+```sh 
+npm run start
+```
+Copy the database string for for update frontend config , ex : **database string: /orbitdb/QmAwesomeHash/dapp-sells-docstore**    
 
 ## Dependencies
 
