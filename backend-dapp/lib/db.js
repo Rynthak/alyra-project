@@ -29,21 +29,38 @@ module.exports = {
 // Note that these options need to be passed to IPFS in
 // all examples in this document even if not specfied so.
 const ipfsOptions = {
-    host: 'ipfs.infura.io', 
-      port: 5001, 
-      protocol: 'https',
-  EXPERIMENTAL: {
-    pubsub: true
-  },
-  relay: {
-      enabled: true,
-      hop: {
-        enabled: true,
-        active: false
+        EXPERIMENTAL: {
+          pubsub: true
+        },
+        relay: {
+            enabled: true,
+            hop: {
+              enabled: true,
+              active: false
+            }
+          },
+          config: {
+                Addresses: {
+                  Swarm: [
+                    // Use IPFS dev signal server
+                    // '/dns4/star-signal.cloud.ipfs.team/wss/p2p-webrtc-star',
+                    '/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star',
+                    // Use local signal server
+                    // '/ip4/0.0.0.0/tcp/9090/wss/p2p-webrtc-star',
+                    "/ip4/107.170.133.32/tcp/4001/ipfs/QmUZRGLhcKXF1JyuaHgKm23LvqcoMYwtb9jmh8CkP4og3K",
+                    "/ip4/139.59.174.197/tcp/4001/ipfs/QmZfTbnpvPwxCjpCG3CXJ7pfexgkBZ2kgChAiRJrTK1HsM",
+                    "/ip4/139.59.6.222/tcp/4001/ipfs/QmRDcEDK9gSViAevCHiE6ghkaBCU7rTuQj4BDpmCzRvRYg",
+                    "/ip4/46.101.198.170/tcp/4001/ipfs/QmePWxsFT9wY3QuukgVDB7XZpqdKhrqJTHTXU7ECLDWJqX",
+                    "/ip4/198.46.197.197/tcp/4001/ipfs/QmdXiwDtfKsfnZ6RwEcovoWsdpyEybmmRpVDXmpm5cpk2s",
+                    "/ip4/198.46.197.197/tcp/4002/ipfs/QmWAm7ZPLGTgofLXZgoAzEaNkYFPsaVKKGjWscE4Fbec9P"
+                  ]
+                },
+                //Bootstrap: [
+                //  "/ip4/198.46.197.197/tcp/4001/ipfs/QmdXiwDtfKsfnZ6RwEcovoWsdpyEybmmRpVDXmpm5cpk2s",
+                //  "/ip4/198.46.197.197/tcp/4002/ipfs/QmWAm7ZPLGTgofLXZgoAzEaNkYFPsaVKKGjWscE4Fbec9P"
+                //]
+              }
       }
- }
-    
-}
 
 // Returns a promise that resolves to a handle of the DB.
 function openDb() {
