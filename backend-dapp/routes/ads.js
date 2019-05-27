@@ -49,7 +49,17 @@ router.post('/create', function(req, res, next) {
              sFileUploaded = fs.readFileSync(files[file].path);
              sBuffer = Buffer.from(sFileUploaded);
              ipfsFile=await global.db._ipfs.files.add(sBuffer);                        
-             newAds.files.push(ipfsFile[0].hash);           
+             newAds.files.push(ipfsFile[0].hash);        
+             
+             global.db._ipfs.pin.add(ipfsFile[0].hash, (err, result) => {
+                 if (err) {
+                     console.er('Error pin', err);
+                     return false;
+                 }
+                 console.log(result[0].hash +' was pinned');
+                 
+             });
+             
         }
          
 

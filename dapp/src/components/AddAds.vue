@@ -1,13 +1,13 @@
 <template>
   <b-container>
-    <h1 class="title">Add new Ads</h1>
+    <h1 class="title">Add new AD</h1>
 
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="adsCategorieGroup"
-        label="Ads Categorie:"
+        label="Categorie:"
         label-for="adsTitle"
-        description="Please select the ADS categorie"
+        description="Please select the categorie"
       >
         <b-form-select
           id="Categorie"
@@ -30,7 +30,7 @@
 
       <b-form-group
         id="adsPhoneGroup"
-        label="Ads Phone:"
+        label="Phone:"
         label-for="adsPhone"
         description="Please enter your phone number"
       >
@@ -39,9 +39,9 @@
 
       <b-form-group
         id="adsCitieGroup"
-        label="Ads Citie:"
+        label="City:"
         label-for="adsCitie"
-        description="Please select your citie"
+        description="Please select your city"
       >
         <v-select
           :filterable="false"
@@ -68,39 +68,39 @@
 
       <b-form-group
         id="adsTitleGroup"
-        label="Ads Title:"
+        label="Title:"
         label-for="adsTitle"
-        description="Please enter the ADS title"
+        description="Please enter a title"
       >
         <b-form-input
           id="adsTitle"
           type="text"
           v-model="form.title"
           required
-          placeholder="Enter Ads Title"
+          placeholder="Enter a Title"
         />
       </b-form-group>
 
       <b-form-group
         id="adsPriceGroup"
-        label="Ads Price:"
+        label="Price:"
         label-for="adsPrice"
         prepend="$"
-        description="Please enter the ADS price(optional)"
+        description="Please enter a price(optional)"
       >
         <b-form-input
           id="adsPrice"
           type="number"
           v-model="form.price"
-          placeholder="Enter Ads price"
+          placeholder="Enter a price"
         />
       </b-form-group>
 
       <b-form-group
         id="adsDescriptionGroup"
-        label="Ads Description:"
+        label="Description:"
         label-for="adsDescription"
-        description="Please enter the ADS description"
+        description="Please enter the description"
       >
         <b-form-textarea
           id="adsDescription"
@@ -115,9 +115,9 @@
       </b-form-group>
       <b-form-group
         id="adsPicturesGroup"
-        label="Ads Pictures:"
+        label="Pictures:"
         label-for="adsPictures"
-        description="Please upload ADS pictures"
+        description="Please upload pictures"
       >
         <b-form-file
           id="adsPictures"
@@ -130,7 +130,7 @@
         />
       </b-form-group>
 
-      <button class="btn btn-primary">Add new ADS</button>
+      <button class="btn btn-primary">Add new AD</button>
       <strong v-show="submitting">Submitting...</strong>
       <p v-show="successMessage" class="text-success">
         <strong>You've been registerd!</strong>
