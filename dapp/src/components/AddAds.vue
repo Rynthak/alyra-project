@@ -5,7 +5,7 @@
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="adsCategorieGroup"
-        label="category:"
+        label="Category:"
         label-for="adsTitle"
         description="Please select the category"
       >
