@@ -5,20 +5,20 @@
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="adsCategorieGroup"
-        label="Categorie:"
+        label="category:"
         label-for="adsTitle"
-        description="Please select the categorie"
+        description="Please select the category"
       >
         <b-form-select
           id="Categorie"
           type="select"
           v-model="form.categorie"
           required
-          placeholder="Please select a categorie"
+          placeholder="Please select a category"
         >
           <!-- This slot appears above the options from 'options' prop -->
           <template slot="first">
-            <option :value="null" disabled>-- Please select an categorie --</option>
+            <option :value="null" disabled>-- Please select a category --</option>
           </template>
           <option
             v-for="categorie in categories"
@@ -123,7 +123,7 @@
           id="adsPictures"
           v-model="form.pictures"
           :state="Boolean(form.pictures)"
-          placeholder="Choose pictures picture..."
+          placeholder="Choose a picture..."
           drop-placeholder="Drop file here..."
           :multiple="Boolean(true)"
           accept="image/*"
